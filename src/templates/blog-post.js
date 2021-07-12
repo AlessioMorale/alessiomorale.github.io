@@ -6,11 +6,18 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Tags from "../components/tag"
 
+import { Disqus, CommentCount } from "gatsby-plugin-disqus"
+
 class BlogPostTemplate extends React.Component {
   render() {
     const post = this.props.data.markdownRemark
     const siteTitle = this.props.data.site.siteMetadata.title
-
+    const disqusConfig = {
+      url: `${this.props.data.site.siteMetadata.siteUrl +
+        this.props.location.pathname}`,
+      identifier: post.id,
+      title: post.title,
+    }
     return (
       <Layout location={this.props.location} title={siteTitle}>
         <SEO
@@ -50,6 +57,8 @@ class BlogPostTemplate extends React.Component {
         If the post has more than one author, we load a specific template
         from includes/byline-multiple.hbs, otherwise, we just use the
         default byline. */}
+            <CommentCount config={disqusConfig} placeholder={"..."} />
+            <Disqus config={disqusConfig} />
           </footer>
         </article>
       </Layout>
@@ -65,6 +74,7 @@ export const pageQuery = graphql`
       siteMetadata {
         title
         author
+        siteUrl
       }
     }
     markdownRemark(fields: { slug: { eq: $slug } }) {
