@@ -102,6 +102,14 @@ const Layout = props => {
           rel="noopener noreferrer"
         >
           Gatsby
+        </a>{" "}
+        &mdash; based on{" "}
+        <a
+          href="https://github.com/vaporwavy/gatsby-london-after-midnight"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Gatsby London After Midnight
         </a>
       </footer>
     </div>
