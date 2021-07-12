@@ -1,6 +1,6 @@
 ---
 id: 820
-title: Creating Docker images for Jetson Nano on your desktop
+title: Building Docker images for Jetson Nano on your desktop
 date: 2021-03-22T09:00:00+02:00
 author: [AlessioMorale]
 draft: false
@@ -10,6 +10,8 @@ categories: + Uncategorized
 tags:
   - arm
   - docker
+  - NVidia
+  - arm64
   - Jetson nano
   - qemu
   - slammer
