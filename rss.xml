@@ -1,16 +1,29 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[A*Morale]]></title><description><![CDATA[a*m thoughts trash can, a blog about robotics, drones, electronics and software engineering]]></description><link>https://blog.alessiomorale.com</link><generator>GatsbyJS</generator><lastBuildDate>Sat, 17 Jul 2021 13:40:45 GMT</lastBuildDate><item><title><![CDATA[Slammer]]></title><description><![CDATA[This project started a few years ago as my learning platform for robotic in general and ROS. At that time i was working mostly with drones…]]></description><link>https://blog.alessiomorale.com/slammer/</link><guid isPermaLink="false">https://blog.alessiomorale.com/slammer/</guid><pubDate>Wed, 16 Jun 2021 23:02:29 GMT</pubDate><content:encoded>&lt;p&gt;This project started a few years ago as my learning platform for robotic in general and ROS.&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[A*Morale]]></title><description><![CDATA[a*m thoughts trash can, a blog about robotics, drones, electronics and software engineering]]></description><link>https://blog.alessiomorale.com</link><generator>GatsbyJS</generator><lastBuildDate>Thu, 14 Oct 2021 16:29:13 GMT</lastBuildDate><item><title><![CDATA[Slammer]]></title><description><![CDATA[This project started a few years ago as my learning platform for robotic in general and ROS. At that time i was working mostly with drones…]]></description><link>https://blog.alessiomorale.com/slammer/</link><guid isPermaLink="false">https://blog.alessiomorale.com/slammer/</guid><pubDate>Wed, 16 Jun 2021 23:02:29 GMT</pubDate><content:encoded>&lt;p&gt;This project started a few years ago as my learning platform for robotic in general and ROS.&lt;/p&gt;
 &lt;p&gt;At that time i was working mostly with drones, but I realised that testing things like mapping and navigation would have been much more harder and almost impossible indoor. For this reason, I started learning the basics of rovers and mobile robotics. Thus Slammer was born.&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;#slammer&quot;&gt;Slammer&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;#slammer-tech-specs&quot;&gt;Slammer tech specs&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;#mechanical-and-electrical-specs&quot;&gt;Mechanical and electrical specs&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#electronics-and-sensors&quot;&gt;Electronics and sensors&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;#software&quot;&gt;Software&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#teleop&quot;&gt;Teleop&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#video&quot;&gt;Video&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2&gt;Slammer&lt;/h2&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#ros&quot;&gt;ROS&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;#teleop&quot;&gt;Teleop&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;#updated-expresslrs-lora-24ghz-teleop&quot;&gt;Updated ExpressLRS Lora 2.4GHz Teleop&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#old-ds4drv-bluetooth-joypad&quot;&gt;Old DS4DRV bluetooth joypad&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#video&quot;&gt;Video&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#additional-pictures&quot;&gt;Additional pictures&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;
   &lt;a
     class=&quot;gatsby-resp-image-link&quot;
-    href=&quot;/static/38e95198e9eee262af35881373b3a9cb/ea20a/IMG_20210114_224713.jpg&quot;
+    href=&quot;/static/3ab7f86d0bb51cdb8b942c748cf4c8d6/05aba/IMG_20211008_183528.jpg&quot;
     style=&quot;display: block&quot;
     target=&quot;_blank&quot;
     rel=&quot;noopener&quot;
@@ -22,36 +35,36 @@
   &gt;
     &lt;span
       class=&quot;gatsby-resp-image-background-image&quot;
-      style=&quot;padding-bottom: 52.3609022556391%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAKABQDASIAAhEBAxEB/8QAGAAAAgMAAAAAAAAAAAAAAAAAAAQBAwX/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIQAxAAAAGxJzCGyQ//xAAcEAABBAMBAAAAAAAAAAAAAAABAAIDEhETM0H/2gAIAQEAAQUCD8GSmy7iouvq/8QAFxEBAAMAAAAAAAAAAAAAAAAAAAEREv/aAAgBAwEBPwG2pf/EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQIBAT8BP//EABsQAAICAwEAAAAAAAAAAAAAAAERACEQEkET/9oACAEBAAY/ArDCdcm3o+hSoM//xAAcEAACAgIDAAAAAAAAAAAAAAAAAREhMbFBYXH/2gAIAQEAAT8hRC24aXAhSo1Br0ZCKDC9FscI/9oADAMBAAIAAwAAABBo3//EABcRAQADAAAAAAAAAAAAAAAAAAABEWH/2gAIAQMBAT8QtLR//8QAFhEBAQEAAAAAAAAAAAAAAAAAABEB/9oACAECAQE/EImP/8QAHBABAAMAAwEBAAAAAAAAAAAAAQARITFBUXGx/9oACAEBAAE/ELLq7Fa3Ozh9jTYArvoV8vsuoVkB38iVS0gT3IRYglshgGFT/9k=&apos;); background-size: cover; display: block;&quot;
+      style=&quot;padding-bottom: 75.00804117079447%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAPABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAABQABA//EABUBAQEAAAAAAAAAAAAAAAAAAAEC/9oADAMBAAIQAxAAAAFHmNkU9Cyf/8QAGhAAAwADAQAAAAAAAAAAAAAAAQIDBBEhE//aAAgBAQABBQL0VJyyRRmAJPG4Fm25/wD/xAAVEQEBAAAAAAAAAAAAAAAAAAAAEf/aAAgBAwEBPwGI/8QAFREBAQAAAAAAAAAAAAAAAAAAABH/2gAIAQIBAT8Bqv/EABoQAAMAAwEAAAAAAAAAAAAAAAABESExUXH/2gAIAQEABj8CT6SFMPw3GKn/xAAaEAEBAAMBAQAAAAAAAAAAAAABEQAhQTFR/9oACAEBAAE/IRB3xO47YN6jdZHIj3GgKDvqfcsNUvmDSdE9z//aAAwDAQACAAMAAAAQO+//xAAWEQADAAAAAAAAAAAAAAAAAAABECH/2gAIAQMBAT8QEJ//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/ED//xAAbEAEAAwEBAQEAAAAAAAAAAAABABEhMUFRYf/aAAgBAQABPxC7QCqAt9t4fsYauNh1a+ZkKUhYNuFQoRwrxXhyCQNQ6B+ibyb6WAIotn//2Q==&apos;); background-size: cover; display: block;&quot;
     &gt;
       &lt;picture&gt;
         &lt;source
-          srcset=&quot;/static/38e95198e9eee262af35881373b3a9cb/53e9f/IMG_20210114_224713.webp 340w,
-/static/38e95198e9eee262af35881373b3a9cb/0991f/IMG_20210114_224713.webp 680w,
-/static/38e95198e9eee262af35881373b3a9cb/9d77c/IMG_20210114_224713.webp 1360w,
-/static/38e95198e9eee262af35881373b3a9cb/27063/IMG_20210114_224713.webp 2040w,
-/static/38e95198e9eee262af35881373b3a9cb/82c87/IMG_20210114_224713.webp 2720w,
-/static/38e95198e9eee262af35881373b3a9cb/afc5a/IMG_20210114_224713.webp 3325w&quot;
+          srcset=&quot;/static/3ab7f86d0bb51cdb8b942c748cf4c8d6/53e9f/IMG_20211008_183528.webp 340w,
+/static/3ab7f86d0bb51cdb8b942c748cf4c8d6/0991f/IMG_20211008_183528.webp 680w,
+/static/3ab7f86d0bb51cdb8b942c748cf4c8d6/9d77c/IMG_20211008_183528.webp 1360w,
+/static/3ab7f86d0bb51cdb8b942c748cf4c8d6/27063/IMG_20211008_183528.webp 2040w,
+/static/3ab7f86d0bb51cdb8b942c748cf4c8d6/82c87/IMG_20211008_183528.webp 2720w,
+/static/3ab7f86d0bb51cdb8b942c748cf4c8d6/943fd/IMG_20211008_183528.webp 3109w&quot;
           sizes=&quot;(max-width: 1360px) 100vw, 1360px&quot;
           type=&quot;image/webp&quot;
         /&gt;
         &lt;source
-          srcset=&quot;/static/38e95198e9eee262af35881373b3a9cb/a0703/IMG_20210114_224713.jpg 340w,
-/static/38e95198e9eee262af35881373b3a9cb/5041d/IMG_20210114_224713.jpg 680w,
-/static/38e95198e9eee262af35881373b3a9cb/fe1b8/IMG_20210114_224713.jpg 1360w,
-/static/38e95198e9eee262af35881373b3a9cb/25fce/IMG_20210114_224713.jpg 2040w,
-/static/38e95198e9eee262af35881373b3a9cb/9bc5d/IMG_20210114_224713.jpg 2720w,
-/static/38e95198e9eee262af35881373b3a9cb/ea20a/IMG_20210114_224713.jpg 3325w&quot;
+          srcset=&quot;/static/3ab7f86d0bb51cdb8b942c748cf4c8d6/a0703/IMG_20211008_183528.jpg 340w,
+/static/3ab7f86d0bb51cdb8b942c748cf4c8d6/5041d/IMG_20211008_183528.jpg 680w,
+/static/3ab7f86d0bb51cdb8b942c748cf4c8d6/fe1b8/IMG_20211008_183528.jpg 1360w,
+/static/3ab7f86d0bb51cdb8b942c748cf4c8d6/25fce/IMG_20211008_183528.jpg 2040w,
+/static/3ab7f86d0bb51cdb8b942c748cf4c8d6/9bc5d/IMG_20211008_183528.jpg 2720w,
+/static/3ab7f86d0bb51cdb8b942c748cf4c8d6/05aba/IMG_20211008_183528.jpg 3109w&quot;
           sizes=&quot;(max-width: 1360px) 100vw, 1360px&quot;
           type=&quot;image/jpeg&quot;
         /&gt;
         &lt;img
           class=&quot;gatsby-resp-image-image&quot;
           style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
-          src=&quot;/static/38e95198e9eee262af35881373b3a9cb/fe1b8/IMG_20210114_224713.jpg&quot;
+          src=&quot;/static/3ab7f86d0bb51cdb8b942c748cf4c8d6/fe1b8/IMG_20211008_183528.jpg&quot;
           alt=&quot;Slammer&quot;
           title=&quot;&quot;
-          src=&quot;/static/38e95198e9eee262af35881373b3a9cb/fe1b8/IMG_20210114_224713.jpg&quot;
+          src=&quot;/static/3ab7f86d0bb51cdb8b942c748cf4c8d6/fe1b8/IMG_20211008_183528.jpg&quot;
         /&gt;
       &lt;/picture&gt;
       &lt;/span&gt;
@@ -59,9 +72,62 @@
   
   &lt;/a&gt;
     &lt;/p&gt;
-&lt;p&gt;In its current configuration it uses four gearmotors for its locomotion using the &lt;a href=&quot;/2020-02-03-unav2-integrated-board-prototype.html&quot;&gt;uNav2 prototype&lt;/a&gt;. Currently it handles feedback (encoders) on two motors only, the other two (identical) motors are simply wired in parallel. Not exactly optimal, this will be handled in future with an additional board, as soon as firmware and hardware are in a more reliable status than MVP.&lt;/s&gt;&lt;/p&gt;
-&lt;p&gt;Recently I update the mechanical part using two planetary gear motors and a system of pulley and belts to link front and rear wheels on each side.&lt;/p&gt;
-&lt;p&gt;The control board is still my trusted &lt;a href=&quot;/2020-02-03-unav2-integrated-board-prototype/&quot;&gt;UNAV2 prototype&lt;/a&gt; (links to the &lt;a href=&quot;https://github.com/AlessioMorale/unav2_hardware/tree/master/integrated_board&quot;&gt;hardware&lt;/a&gt;, &lt;a href=&quot;https://github.com/AlessioMorale/unav2_stm32&quot;&gt;firmware&lt;/a&gt; and &lt;a href=&quot;https://github.com/AlessioMorale/unav2_ros&quot;&gt;ROS drivers&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;In its initial configuration it used four gearmotors for its locomotion using the &lt;a href=&quot;./unav2&quot;&gt;uNav2 prototype&lt;/a&gt;. It was handling the feedback (encoders) on two motors only, with the two others (identical) simply wired in parallel. Not exactly optimal.&lt;/p&gt;
+&lt;p&gt;Recently I update the mechanical part using two planetary gear motors and a system of pulleys and belts to link front and rear wheels on each side.&lt;/p&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/f45b226167953a8ce1289fd2ca7669ee/20284/IMG_20210425_164140.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block; margin: 7vw 0; max-width: 1360px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 133.33333333333331%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAbABQDASIAAhEBAxEB/8QAGQAAAgMBAAAAAAAAAAAAAAAAAAQBAgMF/8QAFQEBAQAAAAAAAAAAAAAAAAAAAQD/2gAMAwEAAhADEAAAAeQxvQsRsJxO665kEf/EAB0QAAMAAgIDAAAAAAAAAAAAAAECAwAREjITIzP/2gAIAQEAAQUCCnElvPIQaS4rpprwGxpxYMq0PsfvfpX6f//EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQMBAT8BH//EABgRAAIDAAAAAAAAAAAAAAAAAAABEBIx/9oACAECAQE/AS0LD//EAB4QAAICAgIDAAAAAAAAAAAAAAABAiERcRBRIkFh/9oACAEBAAY/AveNFSvp8eAs2pjzJOzpkU/pLYtcM//EAB4QAQACAgMAAwAAAAAAAAAAAAEAESFBMVGBobHB/9oACAEBAAE/IWZQLeUo3X1KYoFX5GrSXzmU1mx1KDQ2picNhyOowghgxj3RpVi1cTTLz+T4h9T/2gAMAwEAAgADAAAAEI8zgv/EABcRAAMBAAAAAAAAAAAAAAAAAAABETH/2gAIAQMBAT8QkINj0//EABcRAAMBAAAAAAAAAAAAAAAAAAAQETH/2gAIAQIBAT8QrZH/xAAgEAEAAgIBBQEBAAAAAAAAAAABABEhMVFBgZGxwXGh/9oACAEBAAE/EBQwWFW8SnEBd0u+pXg8W24OGZCkbY3a/dVaoYzuIg5D/BqFkjW8vv7C37SKARxDYUGjuD9ju1AR1BK9sANhfavVzPK9Of/Z&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;picture&gt;
+        &lt;source
+          srcset=&quot;/static/f45b226167953a8ce1289fd2ca7669ee/53e9f/IMG_20210425_164140.webp 340w,
+/static/f45b226167953a8ce1289fd2ca7669ee/0991f/IMG_20210425_164140.webp 680w,
+/static/f45b226167953a8ce1289fd2ca7669ee/9d77c/IMG_20210425_164140.webp 1360w,
+/static/f45b226167953a8ce1289fd2ca7669ee/27063/IMG_20210425_164140.webp 2040w,
+/static/f45b226167953a8ce1289fd2ca7669ee/82c87/IMG_20210425_164140.webp 2720w,
+/static/f45b226167953a8ce1289fd2ca7669ee/caad8/IMG_20210425_164140.webp 2736w&quot;
+          sizes=&quot;(max-width: 1360px) 100vw, 1360px&quot;
+          type=&quot;image/webp&quot;
+        /&gt;
+        &lt;source
+          srcset=&quot;/static/f45b226167953a8ce1289fd2ca7669ee/a0703/IMG_20210425_164140.jpg 340w,
+/static/f45b226167953a8ce1289fd2ca7669ee/5041d/IMG_20210425_164140.jpg 680w,
+/static/f45b226167953a8ce1289fd2ca7669ee/fe1b8/IMG_20210425_164140.jpg 1360w,
+/static/f45b226167953a8ce1289fd2ca7669ee/25fce/IMG_20210425_164140.jpg 2040w,
+/static/f45b226167953a8ce1289fd2ca7669ee/9bc5d/IMG_20210425_164140.jpg 2720w,
+/static/f45b226167953a8ce1289fd2ca7669ee/20284/IMG_20210425_164140.jpg 2736w&quot;
+          sizes=&quot;(max-width: 1360px) 100vw, 1360px&quot;
+          type=&quot;image/jpeg&quot;
+        /&gt;
+        &lt;img
+          class=&quot;gatsby-resp-image-image&quot;
+          style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
+          src=&quot;/static/f45b226167953a8ce1289fd2ca7669ee/fe1b8/IMG_20210425_164140.jpg&quot;
+          alt=&quot;Slammer @ Maker Faire EU 2021&quot;
+          title=&quot;&quot;
+          src=&quot;/static/f45b226167953a8ce1289fd2ca7669ee/fe1b8/IMG_20210425_164140.jpg&quot;
+        /&gt;
+      &lt;/picture&gt;
+      &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;
+&lt;p&gt;&lt;div class=&quot;gatsby-resp-iframe-wrapper&quot; style=&quot;padding-bottom: 50%; position: relative; height: 0; overflow: hidden; margin-bottom: 1.0725rem&quot; &gt; &lt;div class=&quot;embedVideo-container&quot;&gt; &lt;iframe title src=&quot;https://www.youtube-nocookie.com/embed/TDbqgjx-6oY?rel=0&quot; class=&quot;embedVideo-iframe&quot; style=&quot;border:0; position: absolute; top: 0; left: 0; width: 100%; height: 100%; &quot; loading=&quot;lazy&quot; allowfullscreen sandbox=&quot;allow-same-origin allow-scripts allow-popups&quot;&gt;&lt;/iframe&gt; &lt;/div&gt; &lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;The control board is still my trusted &lt;a href=&quot;./unav2&quot;&gt;UNAV2 prototype&lt;/a&gt; (links to the &lt;a href=&quot;https://github.com/AlessioMorale/unav2_hardware/tree/master/integrated_board&quot;&gt;hardware&lt;/a&gt;, &lt;a href=&quot;https://github.com/AlessioMorale/unav2_stm32&quot;&gt;firmware&lt;/a&gt; and &lt;a href=&quot;https://github.com/AlessioMorale/unav2_ros&quot;&gt;ROS drivers&lt;/a&gt;).&lt;/p&gt;
 &lt;p&gt;
   &lt;a
     class=&quot;gatsby-resp-image-link&quot;
@@ -110,13 +176,34 @@
   
   &lt;/a&gt;
     &lt;/p&gt;
-&lt;p&gt;On the sensor side it uses :&lt;/p&gt;
+&lt;h2&gt;Slammer tech specs&lt;/h2&gt;
+&lt;h3&gt;Mechanical and electrical specs&lt;/h3&gt;
 &lt;ul&gt;
-&lt;li&gt;RP Lidar A1M8&lt;/li&gt;
-&lt;li&gt;&lt;del&gt;an old RealSense R200a&lt;/del&gt; Realsense D435&lt;/li&gt;
-&lt;li&gt;imu BNO055&lt;/li&gt;
+&lt;li&gt;Size(LxWxH): 32 x 20 x 15 cm&lt;/li&gt;
+&lt;li&gt;Ground clearance: 4cm&lt;/li&gt;
+&lt;li&gt;Weight: 2 Kg&lt;/li&gt;
+&lt;li&gt;Motors: 2x 28mm planetary gearmotors - 10W - 3Nm (stall torque)&lt;/li&gt;
+&lt;li&gt;Battery: 4S Li-ion battery pack with integrated balancer/protection, 3000mAh (replacement part for vacuum robots)&lt;/li&gt;
+&lt;li&gt;Chassis: 3D printed, assembled using two 300mm 20x20 modular profiles as main carrier frame (parts design to be uploaded soon)&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;At the heart of Slammer there’s a Jetson Nano running from an external USB3 SSD.&lt;/p&gt;
+&lt;h3&gt;Electronics and sensors&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.nvidia.com/object/embedded-systems-dev-kits-modules.html&quot;&gt;NVIDIA Jetson Nano&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://blog.alessiomorale.com/unav2&quot;&gt;Unav2&lt;/a&gt; motor controller.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.intelrealsense.com/depth-camera-d435/&quot;&gt;Intel Realsense D435&lt;/a&gt; depth camera&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.slamtec.com/en/Lidar/A1&quot;&gt;Slamtech A1 LIDAR&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.bosch-sensortec.com/products/smart-sensors/bno055/&quot;&gt;Bosch Sensortec BNO055 based imu&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/ExpressLRS/ExpressLRS&quot;&gt;Express LRS based teleop over Lora&lt;/a&gt; using custom CRSF driver &lt;a href=&quot;https://github.com/AlessioMorale/ros_crsf_driver&quot;&gt;ros-crsf-driver&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://littlewire.github.io/&quot;&gt;Littlewire&lt;/a&gt; based WS281x smart lights based notification system, using custom &lt;a href=&quot;https://github.com/AlessioMorale/ros_signalling&quot;&gt;ROS signalling driver&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Software&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;main &lt;a href=&quot;https://github.com/AlessioMorale/slammer_rover&quot;&gt;ROS robot packages&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;ROS Melodic running on Jetpack 32.5 based &lt;a href=&quot;https://github.com/AlessioMorale/jetson-ros-perception&quot;&gt;Docker images&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;OpenCV, PCL &amp;#x26; librealsense compiled to use CUDA acceleration and offload the CPU.&lt;/li&gt;
+&lt;li&gt;Custom &lt;a href=&quot;https://github.com/AlessioMorale/jetson-ros-rtabmap&quot;&gt;Docker&lt;/a&gt; image running RTABMap &amp;#x26; ROS wrappers recompiled to use the above libraries&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/AlessioMorale/slammer_rover&quot;&gt;complete system&lt;/a&gt; can be started using &lt;a href=&quot;https://github.com/AlessioMorale/slammer_rover/tree/master/docker&quot;&gt;docker-compose&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;
   &lt;a
     class=&quot;gatsby-resp-image-link&quot;
@@ -169,17 +256,18 @@
   
   &lt;/a&gt;
     &lt;/p&gt;
-&lt;h2&gt;Software&lt;/h2&gt;
+&lt;h2&gt;ROS&lt;/h2&gt;
 &lt;p&gt;The system is currently based on ROS Melodic.&lt;/p&gt;
-&lt;p&gt;One of my requisites is to be able to use as much as possible the available GPU to free the CPU for tasks that cannot take advantage of it. For this reason I recompiled from sources both the Realsense drivers, OpenCV and part of RTABMap prerequisites (currently I’m experimenting with PCL).&lt;/p&gt;
+&lt;p&gt;One of my requisites is to be able to use as much as possible the available GPU to free the CPU for tasks that cannot take advantage of it. For this reason I recompiled from sources both the Realsense drivers, OpenCV and part of RTABMap prerequisites (PCL).&lt;/p&gt;
 &lt;p&gt;As rebuilding the software onboard is a very slow process I managed to set up a series of Docker containers and their related CI process so that they are automatically built using Github actions (for example &lt;a href=&quot;https://github.com/AlessioMorale/jetson-ros-rtabmap&quot;&gt;ROS + RTABMap&lt;/a&gt; repository).&lt;/p&gt;
 &lt;p&gt;The ROS workspace used to run Slammer is available in my Github, &lt;a href=&quot;https://github.com/AlessioMorale/rover_launch_files&quot;&gt;here&lt;/a&gt;. The docker folder contains several docker compose files used to start the various software components one by one, everything completely dockerised.&lt;/p&gt;
 &lt;h2&gt;Teleop&lt;/h2&gt;
-&lt;p&gt;Teleop is handled using a bluetooth PS4 joypad as input device using &lt;a href=&quot;https://pypi.org/project/ds4drv/&quot;&gt;DS4DRV&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;Updated ExpressLRS Lora 2.4GHz Teleop&lt;/h3&gt;
+&lt;p&gt;As part of the changes to use the robot at the last Maker Faire in Rome (8-10 Oct 2021), I replaced the bluetooth joypad with an &lt;a href=&quot;https://www.expresslrs.org&quot;&gt;ExpressLRS&lt;/a&gt; receiver and a Jumper T-Lite transmitter. The additional benefit is the possibility to rely on the extensive &lt;a href=&quot;https://www.open-tx.org/&quot;&gt;OpenTX&lt;/a&gt; telemetry and configurability.&lt;/p&gt;
 &lt;p&gt;
   &lt;a
     class=&quot;gatsby-resp-image-link&quot;
-    href=&quot;/static/4ed649a7a6689241c657b1d83511852e/8ca8e/img_20190916_2207583040884031757302502.jpg&quot;
+    href=&quot;/static/ad8f512f9f55c159c75ce39cb6ecb90d/0cf4c/IMG_20211006_232200.jpg&quot;
     style=&quot;display: block&quot;
     target=&quot;_blank&quot;
     rel=&quot;noopener&quot;
@@ -191,36 +279,36 @@
   &gt;
     &lt;span
       class=&quot;gatsby-resp-image-background-image&quot;
-      style=&quot;padding-bottom: 75%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAPABQDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAwAC/8QAFQEBAQAAAAAAAAAAAAAAAAAAAQL/2gAMAwEAAhADEAAAAcAqypLD/8QAGhAAAwADAQAAAAAAAAAAAAAAAQIDAAQSE//aAAgBAQABBQKlHNXpUZFu58I7nXU5JfNP/8QAFREBAQAAAAAAAAAAAAAAAAAAECH/2gAIAQMBAT8Bp//EABYRAQEBAAAAAAAAAAAAAAAAAAARAf/aAAgBAgEBPwHIj//EABwQAAICAgMAAAAAAAAAAAAAAAABAxECEBIhQf/aAAgBAQAGPwLjH5qxtSUmdZtlH//EABsQAQACAwEBAAAAAAAAAAAAAAEAESExQWFx/9oACAEBAAE/IfjI+zauYoPfYqgi2huVbQcew80c2z//2gAMAwEAAgADAAAAEFj/AP/EABURAQEAAAAAAAAAAAAAAAAAAAEA/9oACAEDAQE/EFg3/8QAFhEBAQEAAAAAAAAAAAAAAAAAAREA/9oACAECAQE/EBMci7//xAAaEAEAAwEBAQAAAAAAAAAAAAABABEhMZFx/9oACAEBAAE/EFpUPZ6q3yZ4+Jv5ZPomXd1g+ciapbBCN/Kmp6z/2Q==&apos;); background-size: cover; display: block;&quot;
+      style=&quot;padding-bottom: 75%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAPABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAQDBf/EABYBAQEBAAAAAAAAAAAAAAAAAAIAAf/aAAwDAQACEAMQAAAB49kG1lIC/8QAGhAAAgMBAQAAAAAAAAAAAAAAAQIAERIQE//aAAgBAQABBQJamEz5IeKYKr//xAAVEQEBAAAAAAAAAAAAAAAAAAAQEf/aAAgBAwEBPwGH/8QAFhEBAQEAAAAAAAAAAAAAAAAAABES/9oACAECAQE/AdK//8QAGxAAAgEFAAAAAAAAAAAAAAAAACEQAhExMnH/2gAIAQEABj8CYqja3YeI/8QAHBABAAEEAwAAAAAAAAAAAAAAAQAhMVFhEBFB/9oACAEBAAE/IcW8pkFxCpDpFw1PHs4cT//aAAwDAQACAAMAAAAQLD//xAAXEQADAQAAAAAAAAAAAAAAAAAAAREh/9oACAEDAQE/EG1wh//EABYRAQEBAAAAAAAAAAAAAAAAAAERAP/aAAgBAgEBPxAgkyt//8QAHBABAAICAwEAAAAAAAAAAAAAAQARITFBUXGR/9oACAEBAAE/EHU0aJHmeb4rv5CsFwhn2AmeNFexQs1MoGGl9n//2Q==&apos;); background-size: cover; display: block;&quot;
     &gt;
       &lt;picture&gt;
         &lt;source
-          srcset=&quot;/static/4ed649a7a6689241c657b1d83511852e/53e9f/img_20190916_2207583040884031757302502.webp 340w,
-/static/4ed649a7a6689241c657b1d83511852e/0991f/img_20190916_2207583040884031757302502.webp 680w,
-/static/4ed649a7a6689241c657b1d83511852e/9d77c/img_20190916_2207583040884031757302502.webp 1360w,
-/static/4ed649a7a6689241c657b1d83511852e/27063/img_20190916_2207583040884031757302502.webp 2040w,
-/static/4ed649a7a6689241c657b1d83511852e/82c87/img_20190916_2207583040884031757302502.webp 2720w,
-/static/4ed649a7a6689241c657b1d83511852e/476fa/img_20190916_2207583040884031757302502.webp 3000w&quot;
+          srcset=&quot;/static/ad8f512f9f55c159c75ce39cb6ecb90d/53e9f/IMG_20211006_232200.webp 340w,
+/static/ad8f512f9f55c159c75ce39cb6ecb90d/0991f/IMG_20211006_232200.webp 680w,
+/static/ad8f512f9f55c159c75ce39cb6ecb90d/9d77c/IMG_20211006_232200.webp 1360w,
+/static/ad8f512f9f55c159c75ce39cb6ecb90d/27063/IMG_20211006_232200.webp 2040w,
+/static/ad8f512f9f55c159c75ce39cb6ecb90d/82c87/IMG_20211006_232200.webp 2720w,
+/static/ad8f512f9f55c159c75ce39cb6ecb90d/ce82f/IMG_20211006_232200.webp 3028w&quot;
           sizes=&quot;(max-width: 1360px) 100vw, 1360px&quot;
           type=&quot;image/webp&quot;
         /&gt;
         &lt;source
-          srcset=&quot;/static/4ed649a7a6689241c657b1d83511852e/a0703/img_20190916_2207583040884031757302502.jpg 340w,
-/static/4ed649a7a6689241c657b1d83511852e/5041d/img_20190916_2207583040884031757302502.jpg 680w,
-/static/4ed649a7a6689241c657b1d83511852e/fe1b8/img_20190916_2207583040884031757302502.jpg 1360w,
-/static/4ed649a7a6689241c657b1d83511852e/25fce/img_20190916_2207583040884031757302502.jpg 2040w,
-/static/4ed649a7a6689241c657b1d83511852e/9bc5d/img_20190916_2207583040884031757302502.jpg 2720w,
-/static/4ed649a7a6689241c657b1d83511852e/8ca8e/img_20190916_2207583040884031757302502.jpg 3000w&quot;
+          srcset=&quot;/static/ad8f512f9f55c159c75ce39cb6ecb90d/a0703/IMG_20211006_232200.jpg 340w,
+/static/ad8f512f9f55c159c75ce39cb6ecb90d/5041d/IMG_20211006_232200.jpg 680w,
+/static/ad8f512f9f55c159c75ce39cb6ecb90d/fe1b8/IMG_20211006_232200.jpg 1360w,
+/static/ad8f512f9f55c159c75ce39cb6ecb90d/25fce/IMG_20211006_232200.jpg 2040w,
+/static/ad8f512f9f55c159c75ce39cb6ecb90d/9bc5d/IMG_20211006_232200.jpg 2720w,
+/static/ad8f512f9f55c159c75ce39cb6ecb90d/0cf4c/IMG_20211006_232200.jpg 3028w&quot;
           sizes=&quot;(max-width: 1360px) 100vw, 1360px&quot;
           type=&quot;image/jpeg&quot;
         /&gt;
         &lt;img
           class=&quot;gatsby-resp-image-image&quot;
           style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
-          src=&quot;/static/4ed649a7a6689241c657b1d83511852e/fe1b8/img_20190916_2207583040884031757302502.jpg&quot;
-          alt=&quot;PS4 Joypad&quot;
+          src=&quot;/static/ad8f512f9f55c159c75ce39cb6ecb90d/fe1b8/IMG_20211006_232200.jpg&quot;
+          alt=&quot;IMG 20211006 232200&quot;
           title=&quot;&quot;
-          src=&quot;/static/4ed649a7a6689241c657b1d83511852e/fe1b8/img_20190916_2207583040884031757302502.jpg&quot;
+          src=&quot;/static/ad8f512f9f55c159c75ce39cb6ecb90d/fe1b8/IMG_20211006_232200.jpg&quot;
         /&gt;
       &lt;/picture&gt;
       &lt;/span&gt;
@@ -228,10 +316,118 @@
   
   &lt;/a&gt;
     &lt;/p&gt;
+&lt;p&gt;For this pourpose I wrote a &lt;a href=&quot;https://github.com/AlessioMorale/crsf_parser&quot;&gt;CRSF protocol parser&lt;/a&gt; and a &lt;a href=&quot;https://github.com/AlessioMorale/ros_crsf_driver&quot;&gt;ROS driver&lt;/a&gt;.&lt;/p&gt;
+&lt;h3&gt;Old DS4DRV bluetooth joypad&lt;/h3&gt;
+&lt;p&gt;Teleop was previousluy handled using a bluetooth PS4 joypad as input device using &lt;a href=&quot;https://pypi.org/project/ds4drv/&quot;&gt;DS4DRV&lt;/a&gt;&lt;/p&gt;
 &lt;h2&gt;Video&lt;/h2&gt;
 &lt;p&gt;Below a simple test after installing the four new motors and the unav2 prototype.&lt;/p&gt;
 &lt;p&gt;&lt;div class=&quot;gatsby-resp-iframe-wrapper&quot; style=&quot;padding-bottom: 50%; position: relative; height: 0; overflow: hidden; margin-bottom: 1.0725rem&quot; &gt; &lt;div class=&quot;embedVideo-container&quot;&gt; &lt;iframe title src=&quot;https://www.youtube-nocookie.com/embed/1pnrorfGNso?rel=0&quot; class=&quot;embedVideo-iframe&quot; style=&quot;border:0; position: absolute; top: 0; left: 0; width: 100%; height: 100%; &quot; loading=&quot;lazy&quot; allowfullscreen sandbox=&quot;allow-same-origin allow-scripts allow-popups&quot;&gt;&lt;/iframe&gt; &lt;/div&gt; &lt;/div&gt;&lt;/p&gt;
-&lt;p&gt;Find additional Slammer related blog entries &lt;a href=&quot;/tag/slammer&quot;&gt;here&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Building Docker images for Jetson Nano on your desktop]]></title><description><![CDATA[In this article I will show the workflow I’m using to be able to build Docker containers to be deployed on a Jetson Nano using my desktop…]]></description><link>https://blog.alessiomorale.com/2021-03-22-creating-docker-images-for-jetson-nano-on-your-desktop/</link><guid isPermaLink="false">https://blog.alessiomorale.com/2021-03-22-creating-docker-images-for-jetson-nano-on-your-desktop/</guid><pubDate>Mon, 22 Mar 2021 07:00:00 GMT</pubDate><content:encoded>&lt;p&gt;In this article I will show the workflow I’m using to be able to build Docker containers to be deployed on a Jetson Nano using my desktop machine.&lt;/p&gt;
+&lt;p&gt;Find additional Slammer related blog entries &lt;a href=&quot;/tag/slammer&quot;&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;Additional pictures&lt;/h2&gt;
+&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/dc7a62251eb38d9f0a7ba24f91ceafb3/20284/IMG_20210423_173919.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block; margin: 7vw 0; max-width: 1360px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 133.33333333333331%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAbABQDASIAAhEBAxEB/8QAGQAAAgMBAAAAAAAAAAAAAAAAAAIDBAUG/8QAFwEAAwEAAAAAAAAAAAAAAAAAAAEDAv/aAAwDAQACEAMQAAABeOpNN5I5ta09lpPmxip//8QAIBAAAgECBwEAAAAAAAAAAAAAAQIDABEEEBMhIiMzMf/aAAgBAQABBQIvatQMT9kUtUMRWR9pG4kHsn9rDLE+3//EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQMBAT8BH//EABoRAAICAwAAAAAAAAAAAAAAAAERAAIQEjH/2gAIAQIBAT8BrQJ42Qg5P//EAB0QAAICAQUAAAAAAAAAAAAAAAABAhAhERIxQXH/2gAIAQEABj8CNtaE88EvRMlhtS7JWz//xAAcEAEAAgIDAQAAAAAAAAAAAAABABEhMRBhcUH/2gAIAQEAAT8hIxQtmskFI7jIN3ENyCew0IFzq/sYYzMGoK9JYUgncdcD/9oADAMBAAIAAwAAABC0MEz/xAAYEQADAQEAAAAAAAAAAAAAAAAAAREQIf/aAAgBAwEBPxBt2ZOjP//EABcRAAMBAAAAAAAAAAAAAAAAAAABMRH/2gAIAQIBAT8QY2ooJ8CR/8QAHxABAAICAgIDAAAAAAAAAAAAAQARIUExYZGhUYGx/9oACAEBAAE/EMuQdXKzwoXm7nQSPcRXLeFhueLBidYqONOG1R5l2RB8B2v1KL829EyTGhZCFQA6g8Z+T//Z&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;picture&gt;
+        &lt;source
+          srcset=&quot;/static/dc7a62251eb38d9f0a7ba24f91ceafb3/53e9f/IMG_20210423_173919.webp 340w,
+/static/dc7a62251eb38d9f0a7ba24f91ceafb3/0991f/IMG_20210423_173919.webp 680w,
+/static/dc7a62251eb38d9f0a7ba24f91ceafb3/9d77c/IMG_20210423_173919.webp 1360w,
+/static/dc7a62251eb38d9f0a7ba24f91ceafb3/27063/IMG_20210423_173919.webp 2040w,
+/static/dc7a62251eb38d9f0a7ba24f91ceafb3/82c87/IMG_20210423_173919.webp 2720w,
+/static/dc7a62251eb38d9f0a7ba24f91ceafb3/caad8/IMG_20210423_173919.webp 2736w&quot;
+          sizes=&quot;(max-width: 1360px) 100vw, 1360px&quot;
+          type=&quot;image/webp&quot;
+        /&gt;
+        &lt;source
+          srcset=&quot;/static/dc7a62251eb38d9f0a7ba24f91ceafb3/a0703/IMG_20210423_173919.jpg 340w,
+/static/dc7a62251eb38d9f0a7ba24f91ceafb3/5041d/IMG_20210423_173919.jpg 680w,
+/static/dc7a62251eb38d9f0a7ba24f91ceafb3/fe1b8/IMG_20210423_173919.jpg 1360w,
+/static/dc7a62251eb38d9f0a7ba24f91ceafb3/25fce/IMG_20210423_173919.jpg 2040w,
+/static/dc7a62251eb38d9f0a7ba24f91ceafb3/9bc5d/IMG_20210423_173919.jpg 2720w,
+/static/dc7a62251eb38d9f0a7ba24f91ceafb3/20284/IMG_20210423_173919.jpg 2736w&quot;
+          sizes=&quot;(max-width: 1360px) 100vw, 1360px&quot;
+          type=&quot;image/jpeg&quot;
+        /&gt;
+        &lt;img
+          class=&quot;gatsby-resp-image-image&quot;
+          style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
+          src=&quot;/static/dc7a62251eb38d9f0a7ba24f91ceafb3/fe1b8/IMG_20210423_173919.jpg&quot;
+          alt=&quot;IMG 20210423 173919&quot;
+          title=&quot;&quot;
+          src=&quot;/static/dc7a62251eb38d9f0a7ba24f91ceafb3/fe1b8/IMG_20210423_173919.jpg&quot;
+        /&gt;
+      &lt;/picture&gt;
+      &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    
+
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/404f9d5f900aae290a4627f3920cf28f/1a055/IMG_20210425_164120.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block; margin: 7vw 0; max-width: 1360px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 75%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAPABQDASIAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAMEAv/EABUBAQEAAAAAAAAAAAAAAAAAAAEA/9oADAMBAAIQAxAAAAFFCcDIUkf/xAAbEAABBQEBAAAAAAAAAAAAAAACAAEDERIhIv/aAAgBAQABBQKKHmPNOtUiPLsI1//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQMBAT8BP//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQIBAT8BP//EAB4QAAICAQUBAAAAAAAAAAAAAAERAAIhAxMxQXGB/9oACAEBAAY/Ancv7CKMOcGbXYmW3iZ1bA+T/8QAHRAAAQQDAQEAAAAAAAAAAAAAAQARMVEhQXFhgf/aAAgBAQABPyGyhiHUckhuNqv4AokbmGJ7Gk/E5AX5xdBACf/aAAwDAQACAAMAAAAQVB//xAAWEQEBAQAAAAAAAAAAAAAAAAAAEUH/2gAIAQMBAT8QxH//xAAXEQADAQAAAAAAAAAAAAAAAAAAAREh/9oACAECAQE/EE7pWf/EABsQAQADAQEBAQAAAAAAAAAAAAEAESFBMYHx/9oACAEBAAE/EAPfFHCmrfSAlnoVnt6HLgRQgzQThoHd9odp2Ek/daLxP6iwqtcoX2qZ/9k=&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;picture&gt;
+        &lt;source
+          srcset=&quot;/static/404f9d5f900aae290a4627f3920cf28f/53e9f/IMG_20210425_164120.webp 340w,
+/static/404f9d5f900aae290a4627f3920cf28f/0991f/IMG_20210425_164120.webp 680w,
+/static/404f9d5f900aae290a4627f3920cf28f/9d77c/IMG_20210425_164120.webp 1360w,
+/static/404f9d5f900aae290a4627f3920cf28f/27063/IMG_20210425_164120.webp 2040w,
+/static/404f9d5f900aae290a4627f3920cf28f/82c87/IMG_20210425_164120.webp 2720w,
+/static/404f9d5f900aae290a4627f3920cf28f/cb26d/IMG_20210425_164120.webp 3648w&quot;
+          sizes=&quot;(max-width: 1360px) 100vw, 1360px&quot;
+          type=&quot;image/webp&quot;
+        /&gt;
+        &lt;source
+          srcset=&quot;/static/404f9d5f900aae290a4627f3920cf28f/a0703/IMG_20210425_164120.jpg 340w,
+/static/404f9d5f900aae290a4627f3920cf28f/5041d/IMG_20210425_164120.jpg 680w,
+/static/404f9d5f900aae290a4627f3920cf28f/fe1b8/IMG_20210425_164120.jpg 1360w,
+/static/404f9d5f900aae290a4627f3920cf28f/25fce/IMG_20210425_164120.jpg 2040w,
+/static/404f9d5f900aae290a4627f3920cf28f/9bc5d/IMG_20210425_164120.jpg 2720w,
+/static/404f9d5f900aae290a4627f3920cf28f/1a055/IMG_20210425_164120.jpg 3648w&quot;
+          sizes=&quot;(max-width: 1360px) 100vw, 1360px&quot;
+          type=&quot;image/jpeg&quot;
+        /&gt;
+        &lt;img
+          class=&quot;gatsby-resp-image-image&quot;
+          style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
+          src=&quot;/static/404f9d5f900aae290a4627f3920cf28f/fe1b8/IMG_20210425_164120.jpg&quot;
+          alt=&quot;IMG 20210425 164120&quot;
+          title=&quot;&quot;
+          src=&quot;/static/404f9d5f900aae290a4627f3920cf28f/fe1b8/IMG_20210425_164120.jpg&quot;
+        /&gt;
+      &lt;/picture&gt;
+      &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;</content:encoded></item><item><title><![CDATA[Building Docker images for Jetson Nano on your desktop]]></title><description><![CDATA[In this article I will show the workflow I’m using to be able to build Docker containers to be deployed on a Jetson Nano using my desktop…]]></description><link>https://blog.alessiomorale.com/2021-03-22-creating-docker-images-for-jetson-nano-on-your-desktop/</link><guid isPermaLink="false">https://blog.alessiomorale.com/2021-03-22-creating-docker-images-for-jetson-nano-on-your-desktop/</guid><pubDate>Mon, 22 Mar 2021 07:00:00 GMT</pubDate><content:encoded>&lt;p&gt;In this article I will show the workflow I’m using to be able to build Docker containers to be deployed on a Jetson Nano using my desktop machine.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;#rationale&quot;&gt;Rationale&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;#qemu&quot;&gt;QEMU&lt;/a&gt;&lt;/li&gt;
