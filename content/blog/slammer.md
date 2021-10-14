@@ -20,38 +20,67 @@ This project started a few years ago as my learning platform for robotic in gene
 
 At that time i was working mostly with drones, but I realised that testing things like mapping and navigation would have been much more harder and almost impossible indoor. For this reason, I started learning the basics of rovers and mobile robotics. Thus Slammer was born.
 
-- [Slammer](#slammer)
-- [Software](#software)
+- [Slammer tech specs](#slammer-tech-specs)
+  - [Mechanical and electrical specs](#mechanical-and-electrical-specs)
+  - [Electronics and sensors](#electronics-and-sensors)
+  - [Software](#software)
+- [ROS](#ros)
 - [Teleop](#teleop)
+  - [Updated ExpressLRS Lora 2.4GHz Teleop](#updated-expresslrs-lora-24ghz-teleop)
+  - [Old DS4DRV bluetooth joypad](#old-ds4drv-bluetooth-joypad)
 - [Video](#video)
+- [Additional pictures](#additional-pictures)
 
-## Slammer
+![Slammer](images/2021/10/IMG_20211008_183528.jpg)
 
-![Slammer](images/2021/06/IMG_20210114_224713.jpg)
+In its initial configuration it used four gearmotors for its locomotion using the [uNav2 prototype](./unav2). It was handling the feedback (encoders) on two motors only, with the two others (identical) simply wired in parallel. Not exactly optimal.
 
-In its current configuration it uses four gearmotors for its locomotion using the [uNav2 prototype](/2020-02-03-unav2-integrated-board-prototype.html). Currently it handles feedback (encoders) on two motors only, the other two (identical) motors are simply wired in parallel. Not exactly optimal, this will be handled in future with an additional board, as soon as firmware and hardware are in a more reliable status than MVP.</s>
+Recently I update the mechanical part using two planetary gear motors and a system of pulleys and belts to link front and rear wheels on each side.
 
-Recently I update the mechanical part using two planetary gear motors and a system of pulley and belts to link front and rear wheels on each side.
+![Slammer @ Maker Faire EU 2021](images/2021/10/IMG_20210425_164140.jpg)
 
-The control board is still my trusted [UNAV2 prototype](/2020-02-03-unav2-integrated-board-prototype/) (links to the [hardware](https://github.com/AlessioMorale/unav2_hardware/tree/master/integrated_board), [firmware](https://github.com/AlessioMorale/unav2_stm32) and [ROS drivers](https://github.com/AlessioMorale/unav2_ros)).
+`youtube: https://youtu.be/TDbqgjx-6oY`
+
+The control board is still my trusted [UNAV2 prototype](./unav2) (links to the [hardware](https://github.com/AlessioMorale/unav2_hardware/tree/master/integrated_board), [firmware](https://github.com/AlessioMorale/unav2_stm32) and [ROS drivers](https://github.com/AlessioMorale/unav2_ros)).
 
 ![uNav2](images/2021/06/DSC8028.jpg)
 
-On the sensor side it uses :
+## Slammer tech specs
 
-- RP Lidar A1M8
-- ~~an old RealSense R200a~~ Realsense D435
-- imu BNO055
+### Mechanical and electrical specs
 
-At the heart of Slammer there's a Jetson Nano running from an external USB3 SSD.
+- Size(LxWxH): 32 x 20 x 15 cm
+- Ground clearance: 4cm
+- Weight: 2 Kg
+- Motors: 2x 28mm planetary gearmotors - 10W - 3Nm (stall torque)
+- Battery: 4S Li-ion battery pack with integrated balancer/protection, 3000mAh (replacement part for vacuum robots)
+- Chassis: 3D printed, assembled using two 300mm 20x20 modular profiles as main carrier frame (parts design to be uploaded soon)
+
+### Electronics and sensors
+
+- [NVIDIA Jetson Nano](https://www.nvidia.com/object/embedded-systems-dev-kits-modules.html).
+- [Unav2](https://blog.alessiomorale.com/unav2) motor controller.
+- [Intel Realsense D435](https://www.intelrealsense.com/depth-camera-d435/) depth camera
+- [Slamtech A1 LIDAR](https://www.slamtec.com/en/Lidar/A1)
+- [Bosch Sensortec BNO055 based imu](https://www.bosch-sensortec.com/products/smart-sensors/bno055/)
+- [Express LRS based teleop over Lora](https://github.com/ExpressLRS/ExpressLRS) using custom CRSF driver [ros-crsf-driver](https://github.com/AlessioMorale/ros_crsf_driver)
+- [Littlewire](https://littlewire.github.io/) based WS281x smart lights based notification system, using custom [ROS signalling driver](https://github.com/AlessioMorale/ros_signalling)
+
+### Software
+
+- main [ROS robot packages](https://github.com/AlessioMorale/slammer_rover)
+- ROS Melodic running on Jetpack 32.5 based [Docker images](https://github.com/AlessioMorale/jetson-ros-perception)
+- OpenCV, PCL & librealsense compiled to use CUDA acceleration and offload the CPU.
+- Custom [Docker](https://github.com/AlessioMorale/jetson-ros-rtabmap) image running RTABMap & ROS wrappers recompiled to use the above libraries
+- [complete system](https://github.com/AlessioMorale/slammer_rover) can be started using [docker-compose](https://github.com/AlessioMorale/slammer_rover/tree/master/docker).
 
 ![Jetson Nano](images/2021/06/IMG_20210321_235444.jpg)
 
-## Software
+## ROS
 
 The system is currently based on ROS Melodic.
 
-One of my requisites is to be able to use as much as possible the available GPU to free the CPU for tasks that cannot take advantage of it. For this reason I recompiled from sources both the Realsense drivers, OpenCV and part of RTABMap prerequisites (currently I'm experimenting with PCL).
+One of my requisites is to be able to use as much as possible the available GPU to free the CPU for tasks that cannot take advantage of it. For this reason I recompiled from sources both the Realsense drivers, OpenCV and part of RTABMap prerequisites (PCL).
 
 As rebuilding the software onboard is a very slow process I managed to set up a series of Docker containers and their related CI process so that they are automatically built using Github actions (for example [ROS + RTABMap](https://github.com/AlessioMorale/jetson-ros-rtabmap) repository).
 
@@ -59,9 +88,17 @@ The ROS workspace used to run Slammer is available in my Github, [here](https://
 
 ## Teleop
 
-Teleop is handled using a bluetooth PS4 joypad as input device using [DS4DRV](https://pypi.org/project/ds4drv/)
+### Updated ExpressLRS Lora 2.4GHz Teleop
 
-![PS4 Joypad](images/2021/06/img_20190916_2207583040884031757302502.jpg)
+As part of the changes to use the robot at the last Maker Faire in Rome (8-10 Oct 2021), I replaced the bluetooth joypad with an [ExpressLRS](https://www.expresslrs.org) receiver and a Jumper T-Lite transmitter. The additional benefit is the possibility to rely on the extensive [OpenTX](https://www.open-tx.org/) telemetry and configurability.
+
+![](images/2021/10/IMG_20211006_232200.jpg)
+
+For this pourpose I wrote a [CRSF protocol parser](https://github.com/AlessioMorale/crsf_parser) and a [ROS driver](https://github.com/AlessioMorale/ros_crsf_driver).
+
+### Old DS4DRV bluetooth joypad
+
+Teleop was previousluy handled using a bluetooth PS4 joypad as input device using [DS4DRV](https://pypi.org/project/ds4drv/)
 
 ## Video
 
@@ -70,3 +107,8 @@ Below a simple test after installing the four new motors and the unav2 prototype
 `youtube: https://www.youtube.com/watch?v=1pnrorfGNso`
 
 Find additional Slammer related blog entries [here](/tag/slammer)
+
+## Additional pictures
+
+![](images/2021/10/IMG_20210423_173919.jpg)
+![](images/2021/10/IMG_20210425_164120.jpg)
