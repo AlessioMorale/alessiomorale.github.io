@@ -56,9 +56,10 @@ class BlogPostTemplate extends React.Component {
             {/* There are two options for how we display the byline/author-info.
         If the post has more than one author, we load a specific template
         from includes/byline-multiple.hbs, otherwise, we just use the
-        default byline. */}
+        default byline. 
             <CommentCount config={disqusConfig} placeholder={"..."} />
             <Disqus config={disqusConfig} />
+            */}
           </footer>
         </article>
       </Layout>
