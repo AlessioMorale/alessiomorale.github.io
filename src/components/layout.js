@@ -1,12 +1,33 @@
 import React from "react"
 import { Link } from "gatsby"
+import CookieConsent from "react-cookie-consent"
+import { useLocation } from "@reach/router" // this helps tracking the location
+import { initializeAndTrack } from "gatsby-plugin-gdpr-cookies"
 
 const Layout = props => {
   const { title, children } = props
   const [toggleNav, setToggleNav] = React.useState(false)
+  const location = useLocation()
+
   return (
     <div className={`site-wrapper ${toggleNav ? `site-head-open` : ``}`}>
       <header className="site-head">
+        <CookieConsent
+          location="top"
+          disableStyles
+          buttonText="Accept"
+          declineButtonText="Decline"
+          cookieName="gatsby-gdpr-google-analytics"
+          enableDeclineButton
+          onAccept={() => {
+            initializeAndTrack(location)
+          }}
+        >
+          This website uses cookies to ensure you get the best experience and
+          analyze website traffic on our website.
+          <br />
+          You can disable tracking cookies by selecting "Decline”
+        </CookieConsent>
         <div className="site-head-container">
           <a
             className="nav-burger"
