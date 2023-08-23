@@ -41,7 +41,10 @@
 	
 	<link rel="canonical" href="https://blog.alessiomorale.com/assets/xslt/atom.xslt">
 
-
+	<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+	<meta http-equiv="Pragma" content="no-cache">
+	<meta http-equiv="Expires" content="0">
+	
 	<!-- Facebook Open Graph -->
 	<meta property="og:title" content="Atom Feed (Styled)">
 	<meta property="og:description" content="a*m thoughts trash can: A blog about robotics, drones, electronics and software engineering">
