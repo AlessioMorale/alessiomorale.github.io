@@ -1,0 +1,15 @@
+{% comment %}
+    show a post item summary + image
+    Example: {% include page-item post=post %}
+{% endcomment %}
+<div>
+<h2><a href="{{ site.url }}{{ site.baseurl }}{{ include.post.url }}">{{ include.post.title }}</a></h2>
+<p>
+    {% if include.post.image.thumb %}<a href="{{ site.url }}{{ site.baseurl }}{{ include.post.url }}" title="{{ include.post.title | escape_once }}"><img src="{{ site.urlimg }}{{ include.post.image.thumb }}" class="alignleft" width="150" height="150" alt="{{ include.post.title escape_once }}" style="border-radius:10px"></a>{% endif %}
+    
+{% if include.post.meta_description %}{{ include.post.meta_description | strip_html | escape }}{% elsif include.post.teaser %}{{ include.post.teaser | strip_html | escape }}{% elsif include.post.excerpt %}{{ include.post.excerpt | strip_html | escape  | truncatewords: 50 }}{% endif %}
+
+<a href="{{ site.url }}{{ site.baseurl }}{{ include.post.url }}" title="{{ site.data.language.read }} {{ include.post.title | escape_once }}"><strong>{{ site.data.language.read_more }}</strong></a>
+</p>
+<p class="subheadline">{{ include.post.categories | join: ' &middot; ' | prepend: '<span class="subheader">' | append: '</span>' }}{% if include.post.categories != empty and include.post.subheadline != NULL %} – {% endif %}{{ include.post.subheadline }}</p>
+</div>

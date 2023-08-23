@@ -1,0 +1,21 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "run",
+            "type": "shell",
+            "command": "bash  --login -c 'rvm use ruby-3.1.3 && bundle exec jekyll serve --livereload  --trace --config _config.yml,_config_dev.yml'",
+            "problemMatcher": [],
+            "group": "build"
+        },
+        {
+            "label": "bundle",
+            "type": "shell",
+            "command": "bash  --login -c 'rvm use ruby-3.1.3 && bundle'",
+            "problemMatcher": [],
+            "group": "build"
+        }
+    ]
+}

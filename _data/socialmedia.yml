@@ -1,0 +1,40 @@
+- name: GitHub
+  url: http://github.com/alessiomorale
+  class: icon-github
+
+- name: YouTube
+  url: http://www.youtube.com/@alessiomorale
+  class: icon-youtube
+
+- name: Twitter
+  url: http://twitter.com/alessiomorale
+  class: icon-twitter
+
+- name: linkedin
+  url: https://www.linkedin.com/in/alessiomorale
+  class: icon-linkedin
+
+# - name: Facebook
+#   url: http://www.facebook.com/
+#   class: icon-facebook
+#   title: ""
+
+# - name: Soundcloud
+#   url: http://soundcloud.com/
+#   class: icon-soundcloud
+#   title: ""
+
+# - name: Instagram
+#   url: http://instagram.com/
+#   class: icon-instagram
+#   title: ""
+
+# - name: Pinterest
+#   url: http://www.pinterest.com/
+#   class: icon-pinterest
+#   title: ""
+
+# - name: Xing
+#   url: https://www.xing.com/profile/
+#   class: icon-xing
+#   title: Xing Profil

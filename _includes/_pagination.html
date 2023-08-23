@@ -1,0 +1,36 @@
+{% comment %}
+*  This loops through the paginated posts
+*
+*  Total posts: {{ paginator.total_posts }}
+*  Total paginate-pages: {{ paginator.total_pages }}
+*
+{% endcomment %}
+
+
+{% for post in paginator.posts %}
+  <div class="row">
+    <div class="small-12 columns b60">
+      {% include page-item post=post %}
+    </div><!-- /.small-12.columns -->
+  </div><!-- /.row -->
+{% endfor %}
+
+{% if paginator.total_pages > 1 %}
+<div class="row">
+  <div class="small-12 columns b60">
+<nav id="pagination">
+    {% if paginator.previous_page %}
+      <a rel="prev" class="radius button small" href="{{ paginator.previous_page_path | prepend: site.baseurl }}" title="{{ site.data.language.previous_posts }}">&laquo; {{ site.data.language.previous_posts }}</a>
+    {% endif %}
+    {% if paginator.page_trail %}
+      {% for trail in paginator.page_trail %}
+          <a class="radius button small {% if page.url == trail.path %}alert{% endif %}"  href="{{ trail.path | prepend: site.baseurl }}" title="{{trail.title}}">{{ trail.num }}</a>
+      {% endfor %}
+    {% endif %}
+    {% if paginator.next_page %}
+    <a rel="next" class="radius button small" href="{{ paginator.next_page_path | prepend: site.baseurl }}" title="{{ site.data.language.next_posts }}">{{ site.data.language.next }} &raquo;</a>
+    {% endif %}
+  </div>
+</div>
+</nav>
+{% endif %}

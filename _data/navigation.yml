@@ -1,0 +1,27 @@
+- title: "A*Morale"
+  url: "/"
+  side: left
+  class: home
+
+- title: Projects
+  url: "/projects/"
+  side: left
+
+- title: Blog
+  url: "/blog/index.html"
+  side: left
+
+- title: resources
+  url: 
+  side: left
+  dropdown:
+    - title: "Pizza Robotics"
+      url: https://pizzarobotics.org
+
+- title: "Search"
+  url: "/search/"
+  side: right
+
+- title: "About"
+  url: "/info/"
+  side: right

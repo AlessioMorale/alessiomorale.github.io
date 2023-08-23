@@ -1,0 +1,49 @@
+{% comment %}
+*
+*   Possible parameter for this loop:
+*
+*    › entries
+*    › offset
+*    › category
+*    › tag
+*
+*   Example for Category: {% include list-posts entries='3' offset='1' category='design' %}
+*
+*   Example for Tag: {% include list-posts entries='5' tag='terminal' %}
+*
+*
+*   This loop works like this:
+*
+*   1. First we check if there was given a category for filtering › if include.categories == NULL
+*   2. If no category is given for filtering do a general loop.
+*   3. If a category/tag was given, assign category/tag to the variable category/tag › assign category = include.categories
+*
+{% endcomment %}
+
+{% if include.list %}
+{% assign all_posts = include.list %}
+{% else %}
+{% assign all_posts = site.posts %}
+{% endif %}
+
+
+{% if include.more_url %}
+{% assign more_url = include.more_url %}
+{% else %}
+{% assign more_url = "/blog/" %}
+{% endif %}
+
+{% if include.category %}
+  {% assign posts = site.categories.[category] %}
+{% elsif include.tag %}
+  {% assign posts = site.tags.[tag] %}
+{% else %}
+  {% assign posts = all_posts %}
+{% endif %}
+<ul class="side-nav">
+    {% for post in posts limit:include.entries offset:include.offset %}
+      {% include page-item post=post %}
+    {% endfor %}
+      <li class="text-right"><a href="{{ site.url }}{{ site.baseurl }}{{ more_url }}"><strong>{{ site.data.language.more }}</strong></a></li>
+</ul>
+
