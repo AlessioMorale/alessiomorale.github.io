@@ -219,6 +219,7 @@ collections:
 #   ___/ / /___/ /_/ /
 #  /____/_____/\____/    Verify Website to Webmaster Tools
 
+
 google_site_verification        : ''
 bing_webmastertools_id          : ''
 # yandex_site_verification      : ''
@@ -309,7 +310,8 @@ sass:
 #
 # used in _includes/footer_scripts
 
-# google_analytics_tracking_id:
+google_analytics_tracking_id: G-EGSP92JKW9
+google_analytics: G-EGSP92JKW9
 
 
 
