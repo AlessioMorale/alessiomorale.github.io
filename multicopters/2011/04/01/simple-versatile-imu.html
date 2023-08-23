@@ -1,0 +1,842 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Simple Versatile Imu</title>
+
+    <link rel="stylesheet" type="text/css" href="https://blog.alessiomorale.com/assets/css/styles_feeling_responsive.css">
+
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.0/css/font-awesome.min.css">
+  
+
+	<script src="https://blog.alessiomorale.com/assets/js/modernizr.min.js"></script>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
+	<script>
+		WebFont.load({
+			google: {
+				families: [ 'Lato:400,700,400italic:latin', 'Volkhov::latin' ]
+			}
+		});
+	</script>
+
+	<noscript>
+		<link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic%7CVolkhov' rel='stylesheet' type='text/css'>
+	</noscript>
+
+
+	<!-- Search Engine Optimization -->
+	<meta name="description" content="I’m working on a simple way build a IMU that is easy expandable with new sensors.
+
+What come out was this simple system:
+
+several 20x20mm blocks that could be easily interconnected.
+
+By now i have only build the Logic level translator/3.3v regulator block and a gyro/accelerometer board based on itg3200 and bma180.
+
+Here are the pictures of the buiding process.">
+	<meta name="google-site-verification" content="">
+	<meta name="msvalidate.01" content="" >
+	
+	
+	
+	<link rel="canonical" href="https://blog.alessiomorale.com/multicopters/2011/04/01/simple-versatile-imu.html">
+
+
+	<!-- Facebook Open Graph -->
+	<meta property="og:title" content="Simple Versatile Imu">
+	<meta property="og:description" content="I’m working on a simple way build a IMU that is easy expandable with new sensors.
+
+What come out was this simple system:
+
+several 20x20mm blocks that could be easily interconnected.
+
+By now i have only build the Logic level translator/3.3v regulator block and a gyro/accelerometer board based on itg3200 and bma180.
+
+Here are the pictures of the buiding process.">
+	<meta property="og:url" content="https://blog.alessiomorale.com/multicopters/2011/04/01/simple-versatile-imu.html">
+	<meta property="og:locale" content="en_EN">
+	<meta property="og:type" content="website">
+	<meta property="og:site_name" content="A*Morale">
+	
+	<meta property="article:author" content="https://www.facebook.com/alessiomorale">
+
+
+	
+	<!-- Twitter -->
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:site" content="alessiomorale">
+	<meta name="twitter:creator" content="alessiomorale">
+	<meta name="twitter:title" content="Simple Versatile Imu">
+	<meta name="twitter:description" content="I’m working on a simple way build a IMU that is easy expandable with new sensors.
+
+What come out was this simple system:
+
+several 20x20mm blocks that could be easily interconnected.
+
+By now i have only build the Logic level translator/3.3v regulator block and a gyro/accelerometer board based on itg3200 and bma180.
+
+Here are the pictures of the buiding process.">
+	
+	
+
+	<link type="text/plain" rel="author" href="https://blog.alessiomorale.com/humans.txt">
+
+	
+
+	
+
+	<link rel="icon" sizes="32x32" href="https://blog.alessiomorale.com/assets/img/favicon.ico">
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+	
+
+	
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-EGSP92JKW9"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'G-EGSP92JKW9');
+	</script>
+	
+
+
+</head>
+<body id="top-of-page" class="post">
+	
+	
+<div id="navigation" class="sticky">
+  <nav class="top-bar" role="navigation" data-topbar data-options="scrolltop: false">
+    <ul class="title-area">
+      <li class="name">
+      <h1 class="hide-for-large-up"><a href="https://blog.alessiomorale.com" class="icon-tree"> A*Morale</a></h1>
+    </li>
+       <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+      <li class="toggle-topbar toggle-topbar-click menu-icon"><a><span>Nav</span></a></li>
+    </ul>
+    <section class="top-bar-section">
+
+      <ul class="left">
+        
+
+              
+
+          
+          
+
+            
+            
+              <li class=" home"><a class="home" href="https://blog.alessiomorale.com/">A*Morale</a></li>
+              <li class="divider"></li>
+
+            
+            
+          
+        
+
+              
+
+          
+          
+
+            
+            
+              <li class=" "><a  href="https://blog.alessiomorale.com/projects/">Projects</a></li>
+              <li class="divider"></li>
+
+            
+            
+          
+        
+
+              
+
+          
+          
+
+            
+            
+              <li class=" "><a  href="https://blog.alessiomorale.com/blog/index.html">Blog</a></li>
+              <li class="divider"></li>
+
+            
+            
+          
+        
+
+              
+
+          
+          
+
+            
+            
+
+              <li class="has-dropdown">
+                <a  href="https://blog.alessiomorale.com">resources</a>
+
+                  <ul class="dropdown">
+                    
+
+                      
+
+                      <li><a  href="https://pizzarobotics.org" target="_blank">Pizza Robotics</a></li>
+                    
+                  </ul>
+
+              </li>
+              <li class="divider"></li>
+            
+          
+        
+
+              
+
+          
+          
+        
+
+              
+
+          
+          
+        
+        
+      </ul>
+      
+      
+
+      <ul class="right">
+        
+
+              
+
+
+
+          
+          
+        
+
+              
+
+
+
+          
+          
+        
+
+              
+
+
+
+          
+          
+        
+
+              
+
+
+
+          
+          
+        
+
+              
+
+
+
+          
+          
+            
+            
+              <li class="divider"></li>
+              <li><a  href="https://blog.alessiomorale.com/search/">Search</a></li>
+
+            
+            
+          
+        
+
+              
+
+
+
+          
+          
+            
+            
+              <li class="divider"></li>
+              <li><a  href="https://blog.alessiomorale.com/info/">About</a></li>
+
+            
+            
+          
+        
+        
+      </ul>
+     
+    </section>
+  </nav>
+</div><!-- /#navigation -->
+
+	
+
+	
+
+
+
+
+	<div class="row t30">
+	<div class="medium-8 columns">
+		<article itemscope itemtype="http://schema.org/Article">
+			<header>
+				
+
+				<div itemprop="name">
+					
+					<h1>Simple Versatile Imu</h1>
+				</div>
+			</header>
+
+
+			
+
+			<div itemprop="articleSection">
+			<p>I’m working on a simple way build a IMU that is easy expandable with new sensors.</p>
+
+<p>What come out was this simple system:</p>
+
+<p>several 20x20mm blocks that could be easily interconnected.</p>
+
+<p>By now i have only build the <a href="levelconv.pdf">Logic level translator</a>/3.3v regulator block and a gyro/accelerometer board based on itg3200 and bma180.</p>
+
+<p>Here are the pictures of the buiding process.</p>
+
+<p><img src="/images/2011/04/DSC_5445.jpg" alt="" /></p>
+
+<p><img src="/images/2011/04/DSC_5446.jpg" alt="" /></p>
+
+<p><img src="/images/2011/04/DSC_5449.jpg" alt="" /></p>
+
+<p><img src="/images/2011/04/DSC_5451.jpg" alt="" /></p>
+
+			</div>
+
+			
+						<div id="page-meta" class="t30">
+				<p>
+					<!-- Look the author details up from the site config. -->
+					
+					<!-- Output author details if some exist. -->
+					
+					<span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name" class="pr20 icon-edit"><a href="https://blog.alessiomorale.com" target="_blank"> Alessio Morale</a></span>
+				</span>
+				
+
+				
+				<time class="icon-calendar pr20" datetime="2011-04-01T04:49:27+00:00" itemprop="datePublished"> 2011-04-01</time>
+				
+
+				<span class="icon-archive pr20"> MULTICOPTERS</span>
+				<br />
+				<span class="pr20"><span class="icon-price-tag pr10"><a href="/tag/multicopter/">Multicopter</a></span> </span>
+			</p>
+
+			
+			<div id="post-nav" class="row">
+				
+				<div class="medium-5 columns"><a class="button small radius prev" href="https://blog.alessiomorale.com/multicopters/2011/03/14/new-purple-quad-frame.html">&laquo; New (purple) quad frame</a></div><!-- /.small-4.columns -->
+				
+				<div class="medium-2 columns text-center"><a class="button small radius expand" href="https://blog.alessiomorale.com/blog/archive/" title="Blog Archive">Archive</a></div><!-- /.small-4.columns -->
+				
+				<div class="medium-5 columns text-right"><a class="button small radius next" href="https://blog.alessiomorale.com/multicopters/openpilot/2011/05/02/updates-to-the-big-quad.html">Updates to the big Quad &raquo;</a></div><!-- /.small-4.columns -->
+				
+			</div>
+			
+			</div><!--  /.page-meta -->
+
+			
+
+			
+						
+				<h3 id="comments" class="t60">Dialogue &amp; Discussion</h3>
+			    <div id="disqus_thread"></div>
+			    <script type="text/javascript">
+			        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+			        var disqus_shortname = ''; 
+			        var disqus_identifier = '/multicopters/2011/04/01/simple-versatile-imu.html';
+
+			        /* * * DON'T EDIT BELOW THIS LINE * * */
+			        (function() {
+			            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+			            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+			            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+			        })();
+			    </script>
+			    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+			
+
+
+
+			
+		</article>
+	</div><!-- /.medium-8.columns -->
+
+
+	
+
+
+	
+	<div class="medium-4 columns">
+		<aside>
+	<div class="panel radius">
+		<h3>Resources</h3>
+		<p>
+			Proudly founder of <a href="https://www.pizzarobotics.org/">Pizza robotics</a>
+		</p>
+	</div>
+
+	<div class="border-dotted radius b30">
+		<p class="text-left">
+		
+
+tag
+ <span class="site-tag">
+    <a href="/tag/3dprinter/"
+        style="font-size: 96%">
+            3dprinter (4)
+    </a>
+</span>
+
+tag
+ <span class="site-tag">
+    <a href="/tag/cnc/"
+        style="font-size: 124%">
+            CNC (11)
+    </a>
+</span>
+
+tag
+ <span class="site-tag">
+    <a href="/tag/jetracer/"
+        style="font-size: 84%">
+            JetRacer (1)
+    </a>
+</span>
+
+tag
+ <span class="site-tag">
+    <a href="/tag/jetson-nano/"
+        style="font-size: 88%">
+            Jetson nano (2)
+    </a>
+</span>
+
+tag
+ <span class="site-tag">
+    <a href="/tag/multicopter/"
+        style="font-size: 152%">
+            Multicopter (18)
+    </a>
+</span>
+
+tag
+ <span class="site-tag">
+    <a href="/tag/nvidia/"
+        style="font-size: 84%">
+            NVidia (1)
+    </a>
+</span>
+
+tag
+ <span class="site-tag">
+    <a href="/tag/nvidia/"
+        style="font-size: 84%">
+            Nvidia (1)
+    </a>
+</span>
+
+tag
+ <span class="site-tag">
+    <a href="/tag/odroid/"
+        style="font-size: 84%">
+            ODROID (1)
+    </a>
+</span>
+
+tag
+ <span class="site-tag">
+    <a href="/tag/or15/"
+        style="font-size: 88%">
+            OR15 (2)
+    </a>
+</span>
+
+tag
+ <span class="site-tag">
+    <a href="/tag/openpilot/"
+        style="font-size: 120%">
+            OpenPilot (10)
+    </a>
+</span>
+
+tag
+ <span class="site-tag">
+    <a href="/tag/planes/"
+        style="font-size: 84%">
+            Planes (1)
+    </a>
+</span>
+
+tag
+ <span class="site-tag">
+    <a href="/tag/realsense/"
+        style="font-size: 84%">
+            REALSENSE (1)
+    </a>
+</span>
+
+tag
+ <span class="site-tag">
+    <a href="/tag/ros/"
+        style="font-size: 96%">
+            ROS (4)
+    </a>
+</span>
+
+tag
+ <span class="site-tag">
+    <a href="/tag/rosintegrationproject/"
+        style="font-size: 84%">
+            ROSINTEGRATIONPROJECT (1)
+    </a>
+</span>
+
+tag
+ <span class="site-tag">
+    <a href="/tag/slam/"
+        style="font-size: 84%">
+            SLAM (1)
+    </a>
+</span>
+
+tag
+ <span class="site-tag">
+    <a href="/tag/wanderer/"
+        style="font-size: 84%">
+            Wanderer (1)
+    </a>
+</span>
+
+tag
+ <span class="site-tag">
+    <a href="/tag/arm/"
+        style="font-size: 84%">
+            arm (1)
+    </a>
+</span>
+
+tag
+ <span class="site-tag">
+    <a href="/tag/arm64/"
+        style="font-size: 84%">
+            arm64 (1)
+    </a>
+</span>
+
+tag
+ <span class="site-tag">
+    <a href="/tag/docker/"
+        style="font-size: 84%">
+            docker (1)
+    </a>
+</span>
+
+tag
+ <span class="site-tag">
+    <a href="/tag/firepick/"
+        style="font-size: 96%">
+            firepick (4)
+    </a>
+</span>
+
+tag
+ <span class="site-tag">
+    <a href="/tag/mfr16/"
+        style="font-size: 84%">
+            mfr16 (1)
+    </a>
+</span>
+
+tag
+ <span class="site-tag">
+    <a href="/tag/mfr17/"
+        style="font-size: 88%">
+            mfr17 (2)
+    </a>
+</span>
+
+tag
+ <span class="site-tag">
+    <a href="/tag/pickandplace/"
+        style="font-size: 96%">
+            pickandplace (4)
+    </a>
+</span>
+
+tag
+ <span class="site-tag">
+    <a href="/tag/qemu/"
+        style="font-size: 84%">
+            qemu (1)
+    </a>
+</span>
+
+tag
+ <span class="site-tag">
+    <a href="/tag/robot/"
+        style="font-size: 92%">
+            robot (3)
+    </a>
+</span>
+
+tag
+ <span class="site-tag">
+    <a href="/tag/slammer/"
+        style="font-size: 88%">
+            slammer (2)
+    </a>
+</span>
+
+tag
+ <span class="site-tag">
+    <a href="/tag/unav/"
+        style="font-size: 84%">
+            unav (1)
+    </a>
+</span>
+
+tag
+ <span class="site-tag">
+    <a href="/tag/unav2/"
+        style="font-size: 84%">
+            unav2 (1)
+    </a>
+</span>
+
+		</p>
+	</div>
+</aside>
+	</div><!-- /.medium-4.columns -->
+	
+</div><!-- /.row -->
+
+
+	
+	    <div id="up-to-top" class="row">
+      <div class="small-12 columns" style="text-align: right;">
+        <a class="iconfont" href="#top-of-page">&#xf108;</a>
+      </div><!-- /.small-12.columns -->
+    </div><!-- /.row -->
+
+
+    <footer id="footer-content" class="bg-grau">
+      <div id="footer">
+        <div class="row">
+          <div class="medium-6 large-5 columns">
+            <h5 class="shadow-black">About This Site</h5>
+
+            <p class="shadow-black">
+              a*m thoughts trash can:</br> A blog about robotics, drones, electronics and software engineering
+              <a href="https://blog.alessiomorale.com/info/">More ›</a>
+            </p>
+          </div><!-- /.large-6.columns -->
+
+
+          <div class="small-6 medium-3 large-3 large-offset-1 columns">
+            
+              
+                <h5 class="shadow-black">Services</h5>
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+
+              <ul class="no-bullet shadow-black">
+              
+                
+                  <li >
+                    <a href="https://blog.alessiomorale.com"  title=""></a>
+                  </li>
+              
+                
+                  <li >
+                    <a href="https://blog.alessiomorale.com/info/"  title="Info">Info</a>
+                  </li>
+              
+                
+                  <li >
+                    <a href="https://blog.alessiomorale.com/feed.xml"  title="Subscribe to RSS Feed">RSS</a>
+                  </li>
+              
+                
+                  <li >
+                    <a href="https://blog.alessiomorale.com/atom.xml"  title="Subscribe to Atom Feed">Atom</a>
+                  </li>
+              
+                
+                  <li >
+                    <a href="https://blog.alessiomorale.com/sitemap.xml"  title="Sitemap for Google Webmaster Tools">sitemap.xml</a>
+                  </li>
+              
+              </ul>
+          </div><!-- /.large-4.columns -->
+
+
+          <div class="small-6 medium-3 large-3 columns">
+            
+
+            <ul class="no-bullet shadow-black">
+            
+            </ul>
+          </div><!-- /.large-3.columns -->
+        </div><!-- /.row -->
+
+      </div><!-- /#footer -->
+
+
+      <div id="subfooter">
+        <nav class="row">
+          <section id="subfooter-left" class="small-12 medium-6 columns credits">
+            <p>Created by <a href="https://alessiomorale.com/">Alessio Morale</a> with <a href="http://jekyllrb.com/" target="_blank">Jekyll</a> based on <a href="http://phlow.github.io/feeling-responsive/">Feeling Responsive</a>.</p>
+          </section>
+
+          <section id="subfooter-right" class="small-12 medium-6 columns">
+            
+
+<ul class="inline-list social-icons">
+
+    <li><a href="http://github.com/alessiomorale" target="_blank" class="icon-github" title=""></a></li>
+
+    <li><a href="http://www.youtube.com/@alessiomorale" target="_blank" class="icon-youtube" title=""></a></li>
+
+    <li><a href="http://twitter.com/alessiomorale" target="_blank" class="icon-twitter" title=""></a></li>
+
+    <li><a href="https://www.linkedin.com/in/alessiomorale" target="_blank" class="icon-linkedin" title=""></a></li>
+
+</ul>
+          </section>
+        </nav>
+      </div><!-- /#subfooter -->
+    </footer>
+
+	
+
+	
+
+
+<script src="https://blog.alessiomorale.com/assets/js/javascript.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+	<style>
+    #cookie-notice {padding: 0.5rem 1rem; display: none; text-align: center; position: fixed; bottom: 0; width: calc(100% - 2rem); background: #222; color: rgba(255,255,255,0.8);}
+    #cookie-notice a {display: inline-block; cursor: pointer; margin-left: 0.5rem;}
+    @media (max-width: 767px) {
+        #cookie-notice span {display: block; padding-top: 3px; margin-bottom: 1rem;}
+        #cookie-notice a {position: relative; bottom: 4px;}
+    }
+</style>
+<div id="cookie-notice"><span>We would like to use third party cookies and scripts to improve the functionality of this website.</span>
+    <a id="cookie-notice-accept" class="btn btn-primary btn-sm">Approve</a>
+    <a id="cookie-notice-deny" class="btn btn-primary btn-sm">Deny</a>
+    <a href="/privacy" class="btn btn-primary btn-sm">More info</a></div>
+<script>
+    function createCookie(name,value,days) {
+        var expires = "";
+        if (days) {
+            var date = new Date();
+            date.setTime(date.getTime() + (days*24*60*60*1000));
+            expires = "; expires=" + date.toUTCString();
+        }
+        document.cookie = name + "=" + value + expires + "; path=/";
+    }
+    function readCookie(name) {
+        var nameEQ = name + "=";
+        var ca = document.cookie.split(';');
+        for(var i=0;i < ca.length;i++) {
+            var c = ca[i];
+            while (c.charAt(0)==' ') c = c.substring(1,c.length);
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+        }
+        return null;
+    }
+    function eraseCookie(name) {
+        createCookie(name,"",-1);
+    }
+
+    if(readCookie('cookie-notice-option')=='true') {
+        
+    } else if (readCookie('cookie-notice-option')!='false'){
+        document.getElementById('cookie-notice').style.display = 'block';
+    }
+
+    document.getElementById('cookie-notice-accept').addEventListener("click",function() {
+        createCookie('cookie-notice-option','true',31);
+        document.getElementById('cookie-notice').style.display = 'none';
+        location.reload();
+    });
+
+    document.getElementById('cookie-notice-deny').addEventListener("click",function() {
+        createCookie('cookie-notice-option','false',31);
+        document.getElementById('cookie-notice').style.display = 'none';
+        location.reload();
+    });
+
+</script>
+
+</body>
+</html>
+
