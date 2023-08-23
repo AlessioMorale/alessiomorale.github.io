@@ -53,7 +53,10 @@
 	{% if page.noindex == true or layout.noindex == true %}<meta name="robots" content="noindex">{% endif %}
 	<link rel="canonical" href="{{ url }}{{ page.url }}">
 
-
+	<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+	<meta http-equiv="Pragma" content="no-cache">
+	<meta http-equiv="Expires" content="0">
+	
 	<!-- Facebook Open Graph -->
 	<meta property="og:title" content="{{ title }}">
 	<meta property="og:description" content="{{ description }}">
