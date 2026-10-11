@@ -3,16 +3,16 @@
 <?xml-stylesheet type="text/css" href="/assets/css/atom.css" ?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 	<id>https://blog.alessiomorale.com/</id>
-	<title>A*Morale</title>
-	<updated>2023-09-05T21:47:13+00:00</updated>
+	<title>Slamming Works</title>
+	<updated>2026-10-11T22:45:39+00:00</updated>
 
-	<subtitle>a*m thoughts trash can:&lt;/br&gt; A blog about robotics, drones, electronics and software engineering</subtitle>
+	<subtitle>Robotics, drones, electronics and software engineering, built and documented by Alessio Morale.</subtitle>
 
 	
 		
 		<author>
 			
-				<name>A*Morale</name>
+				<name>Alessio Morale</name>
 			
 			
 			
@@ -22,7 +22,7 @@
 	<link href="https://blog.alessiomorale.com/atom.xml" rel="self" type="application/rss+xml" />
 	<link href="https://blog.alessiomorale.com/" rel="alternate" type="text/html" />
 
-	<generator uri="http://jekyllrb.com" version="4.3.2">Jekyll</generator>
+	<generator uri="http://jekyllrb.com" version="4.4.1">Jekyll</generator>
 
 	
 		<entry>

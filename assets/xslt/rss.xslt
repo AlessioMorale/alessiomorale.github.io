@@ -16,24 +16,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.0/css/font-awesome.min.css">
   
 
-	<script src="https://blog.alessiomorale.com/assets/js/modernizr.min.js"></script>
+	<script>document.documentElement.className = "js";</script>
 
-	<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
-	<script>
-		WebFont.load({
-			google: {
-				families: [ 'Lato:400,700,400italic:latin', 'Volkhov::latin' ]
-			}
-		});
-	</script>
-
-	<noscript>
-		<link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic%7CVolkhov' rel='stylesheet' type='text/css'>
-	</noscript>
+	<link rel="preload" href="https://blog.alessiomorale.com/assets/fonts/archivo-800-900.woff2" as="font" type="font/woff2" crossorigin>
+	<link rel="preload" href="https://blog.alessiomorale.com/assets/fonts/ibm-plex-sans-400-700.woff2" as="font" type="font/woff2" crossorigin>
 
 
 	<!-- Search Engine Optimization -->
-	<meta name="description" content="a*m thoughts trash can: A blog about robotics, drones, electronics and software engineering">
+	<meta name="description" content="Robotics, drones, electronics and software engineering, built and documented by Alessio Morale.">
 	<meta name="google-site-verification" content="">
 	<meta name="msvalidate.01" content="" >
 	
@@ -47,11 +37,11 @@
 	
 	<!-- Facebook Open Graph -->
 	<meta property="og:title" content="RSS Feed (Styled)">
-	<meta property="og:description" content="a*m thoughts trash can: A blog about robotics, drones, electronics and software engineering">
+	<meta property="og:description" content="Robotics, drones, electronics and software engineering, built and documented by Alessio Morale.">
 	<meta property="og:url" content="https://blog.alessiomorale.com/assets/xslt/rss.xslt">
 	<meta property="og:locale" content="en_EN">
 	<meta property="og:type" content="website">
-	<meta property="og:site_name" content="A*Morale">
+	<meta property="og:site_name" content="Slamming Works">
 	
 	<meta property="article:author" content="https://www.facebook.com/alessiomorale">
 
@@ -62,13 +52,11 @@
 	<meta name="twitter:site" content="alessiomorale">
 	<meta name="twitter:creator" content="alessiomorale">
 	<meta name="twitter:title" content="RSS Feed (Styled)">
-	<meta name="twitter:description" content="a*m thoughts trash can: A blog about robotics, drones, electronics and software engineering">
+	<meta name="twitter:description" content="Robotics, drones, electronics and software engineering, built and documented by Alessio Morale.">
 	
 	
 
 	<link type="text/plain" rel="author" href="https://blog.alessiomorale.com/humans.txt">
-
-	
 
 	
 
@@ -99,205 +87,56 @@
 
 	
 
-	
-	<!-- Global site tag (gtag.js) - Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=G-EGSP92JKW9"></script>
-	<script>
-		window.dataLayer = window.dataLayer || [];
-		function gtag(){dataLayer.push(arguments);}
-		gtag('js', new Date());
-
-		gtag('config', 'G-EGSP92JKW9');
-	</script>
-	
-
 
 		]]></xsl:text>
 	</head>
 	<body id="top-of-page">
 		<xsl:text disable-output-escaping="yes"><![CDATA[
 		
-<div id="navigation" class="sticky">
-  <nav class="top-bar" role="navigation" data-topbar data-options="scrolltop: false">
-    <ul class="title-area">
-      <li class="name">
-      <h1 class="hide-for-large-up"><a href="https://blog.alessiomorale.com" class="icon-tree"> A*Morale</a></h1>
-    </li>
-       <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
-      <li class="toggle-topbar toggle-topbar-click menu-icon"><a><span>Nav</span></a></li>
+<header id="navigation">
+  <nav class="site-nav" aria-label="Primary">
+    <a class="brand-link" href="/" aria-label="Slamming Works home">
+      <img class="brand-lockup" src="/slamming-works-logo/slw-lockup.svg" alt="Slamming Works">
+    </a>
+    <a class="nav-byline" href="/info/">by Alessio Morale</a>
+    <button class="nav-toggle" type="button" aria-controls="primary-navigation" aria-expanded="false">Menu</button>
+    <ul id="primary-navigation" class="nav-list">
+      
+        
+        
+        <li class="nav-item">
+          <a href="/projects/">Projects</a>
+        </li>
+      
+        
+        
+        <li class="nav-item">
+          <a href="/blog/">Articles</a>
+        </li>
+      
+        
+        
+        <li class="nav-item nav-item-right">
+          <a href="/info/">About</a>
+        </li>
+      
+        
+        
+        <li class="nav-item nav-item-right">
+          <a href="https://github.com/AlessioMorale/alessiomorale.github.io" rel="noopener noreferrer">Source</a>
+        </li>
+      
     </ul>
-    <section class="top-bar-section">
-
-      <ul class="left">
-        
-
-              
-
-          
-          
-
-            
-            
-              <li class=" home"><a class="home" href="https://blog.alessiomorale.com/">A*Morale</a></li>
-              <li class="divider"></li>
-
-            
-            
-          
-        
-
-              
-
-          
-          
-
-            
-            
-              <li class=" "><a  href="https://blog.alessiomorale.com/projects/">Projects</a></li>
-              <li class="divider"></li>
-
-            
-            
-          
-        
-
-              
-
-          
-          
-
-            
-            
-              <li class=" "><a  href="https://blog.alessiomorale.com/blog/index.html">Blog</a></li>
-              <li class="divider"></li>
-
-            
-            
-          
-        
-
-              
-
-          
-          
-
-            
-            
-
-              <li class="has-dropdown">
-                <a  href="https://blog.alessiomorale.com">resources</a>
-
-                  <ul class="dropdown">
-                    
-
-                      
-
-                      <li><a  href="https://pizzarobotics.org" target="_blank">Pizza Robotics</a></li>
-                    
-                  </ul>
-
-              </li>
-              <li class="divider"></li>
-            
-          
-        
-
-              
-
-          
-          
-        
-
-              
-
-          
-          
-        
-        
-      </ul>
-      
-      
-
-      <ul class="right">
-        
-
-              
-
-
-
-          
-          
-        
-
-              
-
-
-
-          
-          
-        
-
-              
-
-
-
-          
-          
-        
-
-              
-
-
-
-          
-          
-        
-
-              
-
-
-
-          
-          
-            
-            
-              <li class="divider"></li>
-              <li><a  href="https://blog.alessiomorale.com/search/">Search</a></li>
-
-            
-            
-          
-        
-
-              
-
-
-
-          
-          
-            
-            
-              <li class="divider"></li>
-              <li><a  href="https://blog.alessiomorale.com/info/">About</a></li>
-
-            
-            
-          
-        
-        
-      </ul>
-     
-    </section>
   </nav>
-</div><!-- /#navigation -->
+</header>
 
 		
 
 <div id="masthead-no-image-header">
 	<div class="row">
 		<div class="small-12 columns">
-			<a id="logo" href="https://blog.alessiomorale.com/" title="A*Morale – Alessio Morale">
-				<img src="https://blog.alessiomorale.com/assets/img/1x1.png" alt="A*Morale – Alessio Morale">
+			<a id="logo" href="https://blog.alessiomorale.com/" title="Slamming Works">
+				<img src="/slamming-works-logo/slw-lockup.svg" alt="Slamming Works">
 			</a>
 		</div><!-- /.small-12.columns -->
 	</div><!-- /.row -->
@@ -362,7 +201,7 @@
 		<xsl:text disable-output-escaping="yes"><![CDATA[
 		    <div id="up-to-top" class="row">
       <div class="small-12 columns" style="text-align: right;">
-        <a class="iconfont" href="#top-of-page">&#xf108;</a>
+        <a class="to-top" href="#top-of-page">Back to top</a>
       </div><!-- /.small-12.columns -->
     </div><!-- /.row -->
 
@@ -371,10 +210,10 @@
       <div id="footer">
         <div class="row">
           <div class="medium-6 large-5 columns">
-            <h5 class="shadow-black">About This Site</h5>
+            <h5 class="shadow-black">About this site</h5>
 
             <p class="shadow-black">
-              a*m thoughts trash can:</br> A blog about robotics, drones, electronics and software engineering
+              Robotics, drones, electronics and software engineering, built and documented by Alessio Morale.
               <a href="https://blog.alessiomorale.com/info/">More ›</a>
             </p>
           </div><!-- /.large-6.columns -->
@@ -446,35 +285,24 @@
 
           <section id="subfooter-right" class="small-12 medium-6 columns">
             
+<ul class="social-links" aria-label="Profiles">
 
-<ul class="inline-list social-icons">
+    <li><a href="https://github.com/alessiomorale" target="_blank" rel="noopener noreferrer">GitHub</a></li>
 
-    <li><a href="http://github.com/alessiomorale" target="_blank" class="icon-github" title=""></a></li>
+    <li><a href="https://www.youtube.com/@alessiomorale" target="_blank" rel="noopener noreferrer">YouTube</a></li>
 
-    <li><a href="http://www.youtube.com/@alessiomorale" target="_blank" class="icon-youtube" title=""></a></li>
+    <li><a href="https://twitter.com/alessiomorale" target="_blank" rel="noopener noreferrer">Twitter</a></li>
 
-    <li><a href="http://twitter.com/alessiomorale" target="_blank" class="icon-twitter" title=""></a></li>
-
-    <li><a href="https://www.linkedin.com/in/alessiomorale" target="_blank" class="icon-linkedin" title=""></a></li>
+    <li><a href="https://www.linkedin.com/in/alessiomorale" target="_blank" rel="noopener noreferrer">linkedin</a></li>
 
 </ul>
+
           </section>
         </nav>
       </div><!-- /#subfooter -->
     </footer>
 
-		
-
-
-<script src="https://blog.alessiomorale.com/assets/js/javascript.min.js"></script>
-
-
-
-
-
-
-
-
+		<script src="https://blog.alessiomorale.com/assets/js/site.js" defer></script>
 
 
 
