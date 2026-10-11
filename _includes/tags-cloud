@@ -1,10 +1,6 @@
 {% assign tags = site.tags | sort %}
+<ul class="tag-list" aria-label="Tags">
 {% for tag in tags %}
-{{ site.tag_dir}}
- <span class="site-tag">
-    <a href="/{{ site.tag_dir}}/{{ tag | first | slugify }}/"
-        style="font-size: {{ tag | last | size  |  times: 4 | plus: 80  }}%">
-            {{ tag[0] | replace:'-', ' ' }} ({{ tag | last | size }})
-    </a>
-</span>
+  <li><a href="{{ site.baseurl }}/{{ site.tag_dir }}/{{ tag | first | slugify }}/">{{ tag[0] | replace:'-', ' ' }} ({{ tag | last | size }})</a></li>
 {% endfor %}
+</ul>

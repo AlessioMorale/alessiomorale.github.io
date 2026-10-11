@@ -1,3 +1,19 @@
 {
-    "cmake.configureOnOpen": false
+    "cmake.configureOnOpen": false,
+    "workbench.colorCustomizations": {
+        "titleBar.activeBackground": "#50ce9c",
+        "titleBar.activeForeground": "#FFFFFF",
+        "titleBar.inactiveBackground": "#50ce9c",
+        "titleBar.inactiveForeground": "#FFFFFF",
+        "titleBar.border": "#50ce9c",
+        "activityBar.background": "#50ce9c",
+        "activityBar.foreground": "#FFFFFF",
+        "statusBar.background": "#50ce9c",
+        "statusBar.foreground": "#FFFFFF",
+        "statusBar.debuggingBackground": "#50ce9c",
+        "statusBar.debuggingForeground": "#FFFFFF",
+        "tab.activeBorder": "#50ce9c",
+        "iLoveWorkSpaceColors": true,
+        "iLoveWorkSpaceRandom": false
+    }
 }

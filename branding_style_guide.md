@@ -226,7 +226,7 @@ No fade-up on every element, no floating or bounce loops, no scale-on-scroll. Al
 | Instead of | Write |
 | --- | --- |
 | Get started | Clone the repo |
-| Learn more | Read the build log |
+| Learn more | Read the article |
 | Explore | Browse the schematics |
 | Try now | Flash the firmware |
 | Discover | Watch the crash test |
@@ -260,7 +260,7 @@ Every repo README follows this order:
 | --- | --- |
 | GitHub profile and org | Bio: "Building robots that hit things, then logging why. ROS, STM32, drones." Keep it true to current projects. |
 | Social preview (1280 x 640) | Night background, logo, one real photo, one accent block. No stock art. |
-| Website and blog | Navigation lists only pages that exist: Projects, Build logs, About, Source. A control that cannot work yet is removed or labeled "Coming soon". |
+| Website and blog | Navigation lists only pages that exist: Projects, Articles, About, Source. A control that cannot work yet is removed or labeled "Coming soon". |
 | Post and video titles | State the event: `<project>: <what happened>`. |
 | Video thumbnails | A real frame, with Paper text on a Night block. |
 | Hardware silkscreen | `SLAMWORKS`, the project name and the revision letter. |

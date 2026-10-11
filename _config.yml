@@ -8,15 +8,14 @@
 #                                                 /____/
 #
 # Title of your website
-title: "A*Morale"
+title: "Slamming Works"
 
 # The slogan describes your website and is used on homepage in <title> and other important places
 slogan: 'Alessio Morale'
 
 # The description is used on homepage and in the footer to quickly describe your website. Use a maximum of 150 characters for SEO-purposes.
-description: >- # this means to ignore newlines until "baseurl:"
-  a*m thoughts trash can:</br>
-  A blog about robotics, drones, electronics and software engineering
+description: >-
+  Robotics, drones, electronics and software engineering, built and documented by Alessio Morale.
 
 # The credits show up in the includes/_footer.html – It would be nice of you to leave a link to Phlow or Feeling Responsive as a thank you :)
 credits: '<p>Created by <a href="https://alessiomorale.com/">Alessio Morale</a> with <a href="http://jekyllrb.com/" target="_blank">Jekyll</a> based on <a href="http://phlow.github.io/feeling-responsive/">Feeling Responsive</a>.</p>'
@@ -24,7 +23,7 @@ credits: '<p>Created by <a href="https://alessiomorale.com/">Alessio Morale</a> 
 # Main author of the website
 # See > authors.yml
 # Author Settings
-author: "A*Morale"
+author: "Alessio Morale"
 author-img: "profile-pic.png"
 
 # This URL is the main address for absolute links. Don't include a slash at the end.
@@ -44,8 +43,8 @@ baseurl: "" # the subpath of your site, e.g. /blog
 #
 urlimg: 'https://blog.alessiomorale.com/images/'
 
-# Logo size is 600x80 pixels
-logo: "1x1.png"
+# The Slamming Works lockup is displayed in the site navigation.
+logo: "/slamming-works-logo/slw-lockup.svg"
 
 # Plugins
 plugins:
@@ -93,7 +92,7 @@ pagination:
   per_page: 10
 
   # The permalink structure for the paginated pages (this can be any level deep)
-  permalink: '/blog/:num/' # Pages are index.html inside this folder (default)
+  permalink: '/:num/' # Relative to the paginated page, so /blog/ becomes /blog/2/
   #permalink: '/page/:num.html' # Pages are simple html files 
   #permalink: '/page/:num' # Pages are html files, linked jekyll extensionless permalink style.
 
@@ -134,11 +133,20 @@ include            : ['.htaccess']
 # Exclude these files from your production _site
 exclude:
     - .sass-cache
+    - .devcontainer
+    - .github
+    - .ruby-lsp
+    - .mypy_cache
+    - .vscode
     - Gemfile
     - Gemfile.lock
     - LICENSE
     - README.md
     - INSTALL.md
+    - branding_style_guide.md
+    - run.sh
+    - slamming-works-logo/gen_logo.py
+    - slamming-works-logo/v*
     - vendor
 
 
@@ -173,7 +181,7 @@ defaults:
     values:
       type: 'blog'
       show_meta: true   # Show metadata for all posts
-      comments: true
+      comments: false   # Disqus is not configured (no disqus_shortname)
       author: AlessioMorale     # Default author for posts
       layout: page
       header: no
@@ -296,8 +304,16 @@ socialmedia:
 #   /____/\__,_/____/____/      More › http://jekyllrb.com/docs/assets/#sassscss
 #
 
+# Foundation 5 partials still use @import and global Sass functions.
+# Dart Sass reports these as deprecations; they are silenced until the partials move to Sass modules.
 sass:
     sass_dir : _sass
+    quiet_deps: true
+    silence_deprecations:
+        - import
+        - global-builtin
+        - if-function
+        - color-functions
     style    : :compressed
 
 

@@ -1,8 +1,7 @@
 ---
 layout: default
 ---
-<!-- Just some nice to have styles for the pager buttons -->
-<h1 class="page-heading">Posts by tag <b>{% if page.autopages %}{{page.autopages.display_name}}{% endif %}</b> Page {{page.pagination_info.curr_page}} of {{page.pagination_info.total_pages}}</h1>
+<div class="row"><div class="small-12 columns t30"><h1 class="page-heading">Articles tagged {% if page.autopages %}{{page.autopages.display_name}}{% endif %}</h1>{% if page.pagination_info.total_pages > 1 %}<p>Page {{page.pagination_info.curr_page}} of {{page.pagination_info.total_pages}}</p>{% endif %}</div></div>
   
 {{ content | markdownify }}
 
@@ -18,12 +17,12 @@ layout: default
 <ul class="pager">
     {% if paginator.previous_page %}
     <li class="previous">
-        <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&larr; Newer Posts</a>
+        <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&larr; Newer articles</a>
     </li>
     {% endif %}
     {% if paginator.next_page %}
     <li class="next">
-        <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Older Posts &rarr;</a>
+        <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Older articles &rarr;</a>
     </li>
     {% endif %}
 </ul>

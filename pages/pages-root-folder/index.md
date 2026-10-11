@@ -5,9 +5,8 @@
 # this work, you have to use › layout: frontpage
 #
 layout: frontpage
-header:
-  image_fullwidth: blog-cover.png
-  title: a*m thoughts trash can
+header: false
+title: "Slamming Works"
 
 permalink: /index.html
 #

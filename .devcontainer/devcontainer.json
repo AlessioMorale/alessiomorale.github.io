@@ -3,7 +3,18 @@
 {
 	"name": "Jekyll",
 	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
-	"image": "mcr.microsoft.com/devcontainers/jekyll:2-bullseye"
+	"image": "mcr.microsoft.com/devcontainers/jekyll",
+
+	// Pin the container path so Claude's per-project session folder name is predictable
+	// (Claude keys sessions by absolute path: /workspaces/alessiomorale.github.io -> -workspaces-alessiomorale-github-io).
+	"workspaceFolder": "/workspaces/alessiomorale.github.io",
+
+	// Share Claude Code sessions with the local workspace. The local session folder is bind-mounted
+	// onto the folder Claude uses for this path inside the container, so both sides read and write
+	// the same conversations. Credentials are NOT shared: log in once inside the container.
+	"mounts": [
+		"source=${localEnv:HOME}/.claude/projects/-Users-alessiomorale-code-blog-alessiomorale-github-io,target=/home/vscode/.claude/projects/-workspaces-alessiomorale-github-io,type=bind"
+	],
 
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {},
@@ -11,11 +22,18 @@
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
 
-	// Uncomment the next line to run commands after the container is created.
-	// "postCreateCommand": "jekyll --version"
+	// The bind mount creates the parent ~/.claude folders as root; hand them back to the dev user.
+	// This only touches container-local directories, not the mounted host folder.
+	"postCreateCommand": "sudo chown vscode:vscode /home/vscode/.claude /home/vscode/.claude/projects",
 
 	// Configure tool-specific properties.
-	// "customizations": {},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"anthropic.claude-code"
+			]
+		}
+	}
 
 	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
 	// "remoteUser": "root"

@@ -1,15 +1,11 @@
-<style>
-    #cookie-notice {padding: 0.5rem 1rem; display: none; text-align: center; position: fixed; bottom: 0; width: calc(100% - 2rem); background: #222; color: rgba(255,255,255,0.8);}
-    #cookie-notice a {display: inline-block; cursor: pointer; margin-left: 0.5rem;}
-    @media (max-width: 767px) {
-        #cookie-notice span {display: block; padding-top: 3px; margin-bottom: 1rem;}
-        #cookie-notice a {position: relative; bottom: 4px;}
-    }
-</style>
-<div id="cookie-notice"><span>We would like to use third party cookies and scripts to improve the functionality of this website.</span>
-    <a id="cookie-notice-accept" class="btn btn-primary btn-sm">Approve</a>
-    <a id="cookie-notice-deny" class="btn btn-primary btn-sm">Deny</a>
-    <a href="/privacy" class="btn btn-primary btn-sm">More info</a></div>
+<div id="cookie-notice" role="region" aria-label="Analytics consent" hidden>
+    <p>This site can use Google Analytics to count visits. It stays off unless you approve.</p>
+    <div class="cookie-actions">
+        <button type="button" id="cookie-notice-accept">Approve</button>
+        <button type="button" id="cookie-notice-deny">Deny</button>
+        <a class="button" href="{{ site.baseurl }}/privacy/">Read the privacy notes</a>
+    </div>
+</div>
 <script>
     function createCookie(name,value,days) {
         var expires = "";
@@ -39,18 +35,18 @@
             {% include ga.js %}
         {% endif %}
     } else if (readCookie('cookie-notice-option')!='false'){
-        document.getElementById('cookie-notice').style.display = 'block';
+        document.getElementById('cookie-notice').hidden = false;
     }
 
     document.getElementById('cookie-notice-accept').addEventListener("click",function() {
         createCookie('cookie-notice-option','true',31);
-        document.getElementById('cookie-notice').style.display = 'none';
+        document.getElementById('cookie-notice').hidden = true;
         location.reload();
     });
 
     document.getElementById('cookie-notice-deny').addEventListener("click",function() {
         createCookie('cookie-notice-option','false',31);
-        document.getElementById('cookie-notice').style.display = 'none';
+        document.getElementById('cookie-notice').hidden = true;
         location.reload();
     });
 

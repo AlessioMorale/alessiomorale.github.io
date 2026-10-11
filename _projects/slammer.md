@@ -106,7 +106,7 @@ Teleop was previousluy handled using a bluetooth PS4 joypad as input device usin
 Below a simple test after installing the four new motors and the unav2 prototype.
 
 <div class="flex-video">
-<iframe width="420" height="315" src="https://www.youtube.com/embed/TDbqgjx-6oY" frameborder="0" allowfullscreen></iframe>
+<iframe width="420" height="315" src="https://www.youtube-nocookie.com/embed/TDbqgjx-6oY" title="Slammer test with four new motors and the uNav2 prototype" loading="lazy" allowfullscreen></iframe>
 </div>
 
 Find additional Slammer related blog entries [here](/tag/slammer)

@@ -4,7 +4,7 @@ teaser: "Alessio Morale - Drones, robotics and electronics enthusiast, software 
 permalink: "/info/"
 header:
     image_fullwidth: alessio_1.jpg
-    title: "Alessio Morale - Who Am I?"
+    title: "Who am I?"
 ---
 
 Software engineer by trade, currently working with robotics simulations.
@@ -24,8 +24,8 @@ robotics, <a href="https://www.ros.org">ROS</a>, products design,
 3d printing and home automation (I'm lazy🙂)
 
 Some of the projects I'm currently working on are
-<a href="/projects/slammer/">Slammer</a>, a rover robot and 
-<a href="/projects/unav2/">uNav2</a>, an advanced motor control board for robots
+<a href="/slammer/">Slammer</a>, a rover robot and 
+<a href="/unav2/">uNav2</a>, an advanced motor control board for robots
 
 ![me](/images/alessio_1.jpg)
 
